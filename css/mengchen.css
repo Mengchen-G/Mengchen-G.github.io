@@ -1,0 +1,147 @@
+/* color pattern
+rgb(17,20,28) dark blue
+rgb(114,24,37) red
+rgb(127,159,166) light blue
+rgb(216,208,197) off white
+rgb(37,37,54) dark grey
+rgb
+*/
+
+body{
+	background-color: rgb(216,208,197);
+	font-family: 'Cuprum', serif;
+	font-size:2em;
+	color:rgb(25,25,25);
+	margin:0px;
+}
+body {}
+
+h1{
+  text-align: center;
+  font-size: 2.2em;
+  color: rgb(17,20,28);
+  font-family: 'Lobster', cursive;
+}
+
+h2{
+  text-align: center;
+  color: rgb(216,208,197);
+  font-size: 1.2em;
+  text-decoration: underline overline;
+  font-family: 'Lobster', cursive;
+}
+
+h3{
+  text-align: center;
+  font-size: 1em;
+  font-family: 'Lobster', cursive;
+}
+
+p{
+  text-align: justify;
+  font-size: 0.7em;
+  line-height: 1.6em;
+}
+
+.topnav {
+  background-color: rgb(37,37,54);
+  overflow: auto;
+}
+
+.topnav a {
+  float: right;
+  display: block;
+  color: rgb(238,244,242);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 0.8em;
+  font-family: 'Lobster', cursive;
+}
+
+.topnav a:hover:not(.active)  {
+  background-color: rgb(127,159,166);
+  color: black;
+}
+
+.topnav a.active {
+  background-color: rgb(127,159,166);
+  text-decoration: underline;
+  color: black;
+}
+
+.wrapper{
+  width:100%;
+  height: 100%;
+  background-color: rgb(114,24,37);
+  vertical-align: center;
+}
+
+.about_me img{
+  width: 90%;
+}
+
+.resume iframe{
+  width:950px; 
+  height:625px;
+  border: none;
+  margin-left: 12%;
+  margin-right: 12%;
+}
+
+
+
+table {
+  color: rgb(216,208,197);
+  width: 76%; 
+  border: 0pt;
+  text-align: center;
+  margin-left: 12%;
+  margin-right: 12%;
+}
+
+
+.pic img{
+  width: 99%;
+  height: auto;
+  margin-right: 0.5%;
+  margin-left: 0.5%;
+}
+
+hr.style { 
+  height: 30px; 
+  border-style: solid; 
+  border-color: #8c8b8b; 
+  border-width: 1px 0 0 0; 
+  border-radius: 20px; 
+}
+
+hr.style:before { 
+  display: block; 
+  content: ""; 
+  height: 30px; 
+  margin-top: -31px; 
+  border-style: solid; 
+  border-color: #8c8b8b; 
+  border-width: 0 0 1px 0; 
+  border-radius: 20px; 
+}
+
+footer {
+	text-align: center;
+	font-size: 1em;
+	padding: 0px 0px 5px 0px;
+  margin-left: 10%;
+  margin-right: 10%;
+	font-family: 'Lobster', cursive;	
+}
+
+.contact img{
+    width: 3.6%;
+    height: 3.6%;
+}
+
+.contact a img:hover{
+    color: rgb(37,37,54);
+}
+
