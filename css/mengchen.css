@@ -14,7 +14,6 @@ body{
 	color:rgb(25,25,25);
 	margin:0px;
 }
-body {}
 
 h1{
   text-align: center;
@@ -36,6 +35,21 @@ h3{
   font-size: 100%;
   font-family: 'Lobster', cursive;
 }
+
+
+.post p{
+  width: 76vw;
+  font-size: 50%;
+  margin-left:12vw;
+  margin-right:12vw;
+  text-align: center;
+  padding:0;
+}
+
+.post hr{
+  width: 76vw;
+}
+
 
 p{
   text-align: justify;
@@ -93,7 +107,7 @@ p{
 
 table {
   color: rgb(216,208,197);
-  width: 76%; 
+  width: 76vw; 
   border: 0pt;
   text-align: center;
   margin-left: 12%;
@@ -129,7 +143,7 @@ hr.style:before {
 
 footer {
 	text-align: center;
-	font-size: 1em;
+	font-size: 0.9em;
 	padding: 0px 0px 5px 0px;
   margin-left: 10%;
   margin-right: 10%;
