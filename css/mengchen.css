@@ -46,6 +46,13 @@ h3{
   padding:0;
 }
 
+.post img{
+  width: 70vw;
+  margin-left:15vw;
+  margin-right:15vw;
+  text-align: center;
+}
+
 .post hr{
   width: 76vw;
 }
