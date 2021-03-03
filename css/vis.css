@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  padding: 10em, 10em;
+  font: 15px 'Source Sans Pro', sans-serif;
+  line-height: 1.6em;
+  color: #222;
+  text-align: center;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: inherit;
+  line-height: 1.1;
+  color: inherit;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+}
+
+h3 {
+	margin-top: -1rem;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    line-height: 1.6em;
+}
+
+img {
+	width: 70%;
+	text-align: center;
+	margin-left: 15%;
+}
+
+.story{
+	text-align: left;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
