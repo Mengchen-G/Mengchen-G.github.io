@@ -1,0 +1,3603 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <link rel="stylesheet" href="css/vis.css">
+</head>
+<body>
+  <div class="story">
+  	<h1>Module3 Workflow: Hate Crime Rate Analysis</h1>
+  	<h3>By: Mengchen Gong</h3>
+
+  	<p>I retrieved this dataset from 538 github</p>
+    <p> Source Cited: <a href="https://github.com/fivethirtyeight/data/tree/master/hate-crimes">Hate Crimes</a> "This folder contains data behind the story Higher Rates Of Hate Crimes Are Tied To Income Inequality."</p>
+
+    <h2>Attributes Correlations </h2>
+    <div class="float-container">
+
+      <div class="float-child1" >
+        <div class="rate_corr">
+          <h3>Hate-Crime Correlation <br> (high - low)</h3>
+          <table>
+            <tr id="attr1">
+              <td>Gini Index</td>
+            </tr>
+            <tr id="attr2">
+              <td>Median Household Income</td>
+            </tr>
+            <tr id="attr3">
+              <td>Non_citizen Ratio</td>
+            </tr>
+            <tr id="attr4">
+              <td>Metro-area Population Ratio</td>
+            </tr>
+            <tr id="attr5">
+              <td>HighSchool Degree Population Ratio</td>
+            </tr>
+            <tr id="attr6">
+              <td>Non-white Population Ratio</td>
+            </tr>
+            <tr id="attr7">
+              <td>Seasonal unemployement Ratio</td>
+            </tr>
+            <tr id="attr8">
+              <td>White Poverty Ratio</td>
+            </tr>
+            <tr id="attr9">
+              <td>Trump Voter Ratio</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="float-child2">
+        <div class="attr_corr">
+          <h3>Heatmap</h3>
+          <img src="img/heatmap.png" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br/>
+
+  <div class="story">
+    <h2> Scatter Plot </h2>
+  </div>
+  <div id="scat1"></div>
+  <script type="text/javascript">
+    var spec4 = {
+      "$schema": "https://vega.github.io/schema/vega/v5.json",
+      "background": "white",
+      "padding": 5,
+      "width": 600,
+      "height": 400,
+      "style": "cell",
+      "data": [
+        {
+          "name": "data-039bb35c1359776590ac17ba1b0537cf",
+          "values": [
+            {
+              "id": 1,
+              "state": "Alabama",
+              "avg_hatecrimes_per_100k_fbi": 1.8064104890000001,
+              "median_household_income": 42278,
+              "share_unemployed_seasonal": 0.06,
+              "share_population_in_metro_areas": 0.64,
+              "share_population_with_high_school_degree": 0.821,
+              "share_non_citizen": 0.02,
+              "share_white_poverty": 0.12,
+              "gini_index": 0.47200000000000003,
+              "share_non_white": 0.35,
+              "share_voters_voted_trump": 0.63,
+              "hate_crimes_per_100k_splc": 0.125838926
+            },
+            {
+              "id": 2,
+              "state": "Alaska",
+              "avg_hatecrimes_per_100k_fbi": 1.656700109,
+              "median_household_income": 67629,
+              "share_unemployed_seasonal": 0.064,
+              "share_population_in_metro_areas": 0.63,
+              "share_population_with_high_school_degree": 0.914,
+              "share_non_citizen": 0.04,
+              "share_white_poverty": 0.06,
+              "gini_index": 0.42200000000000004,
+              "share_non_white": 0.42,
+              "share_voters_voted_trump": 0.53,
+              "hate_crimes_per_100k_splc": 0.143740118
+            },
+            {
+              "id": 4,
+              "state": "Arizona",
+              "avg_hatecrimes_per_100k_fbi": 3.413927994,
+              "median_household_income": 49254,
+              "share_unemployed_seasonal": 0.063,
+              "share_population_in_metro_areas": 0.9,
+              "share_population_with_high_school_degree": 0.8420000000000001,
+              "share_non_citizen": 0.1,
+              "share_white_poverty": 0.09,
+              "gini_index": 0.455,
+              "share_non_white": 0.49,
+              "share_voters_voted_trump": 0.5,
+              "hate_crimes_per_100k_splc": 0.225319954
+            },
+            {
+              "id": 5,
+              "state": "Arkansas",
+              "avg_hatecrimes_per_100k_fbi": 0.8692088720000001,
+              "median_household_income": 44922,
+              "share_unemployed_seasonal": 0.052000000000000005,
+              "share_population_in_metro_areas": 0.69,
+              "share_population_with_high_school_degree": 0.8240000000000001,
+              "share_non_citizen": 0.04,
+              "share_white_poverty": 0.12,
+              "gini_index": 0.45799999999999996,
+              "share_non_white": 0.26,
+              "share_voters_voted_trump": 0.6,
+              "hate_crimes_per_100k_splc": 0.06906077299999999
+            },
+            {
+              "id": 6,
+              "state": "California",
+              "avg_hatecrimes_per_100k_fbi": 2.397985899,
+              "median_household_income": 60487,
+              "share_unemployed_seasonal": 0.059000000000000004,
+              "share_population_in_metro_areas": 0.97,
+              "share_population_with_high_school_degree": 0.8059999999999999,
+              "share_non_citizen": 0.13,
+              "share_white_poverty": 0.09,
+              "gini_index": 0.47100000000000003,
+              "share_non_white": 0.61,
+              "share_voters_voted_trump": 0.33,
+              "hate_crimes_per_100k_splc": 0.255805361
+            },
+            {
+              "id": 8,
+              "state": "Colorado",
+              "avg_hatecrimes_per_100k_fbi": 2.804688765,
+              "median_household_income": 60940,
+              "share_unemployed_seasonal": 0.04,
+              "share_population_in_metro_areas": 0.8,
+              "share_population_with_high_school_degree": 0.893,
+              "share_non_citizen": 0.06,
+              "share_white_poverty": 0.07,
+              "gini_index": 0.457,
+              "share_non_white": 0.31,
+              "share_voters_voted_trump": 0.44,
+              "hate_crimes_per_100k_splc": 0.390523301
+            },
+            {
+              "id": 9,
+              "state": "Connecticut",
+              "avg_hatecrimes_per_100k_fbi": 3.772701469,
+              "median_household_income": 70161,
+              "share_unemployed_seasonal": 0.052000000000000005,
+              "share_population_in_metro_areas": 0.94,
+              "share_population_with_high_school_degree": 0.8859999999999999,
+              "share_non_citizen": 0.06,
+              "share_white_poverty": 0.06,
+              "gini_index": 0.486,
+              "share_non_white": 0.3,
+              "share_voters_voted_trump": 0.41,
+              "hate_crimes_per_100k_splc": 0.33539226899999997
+            },
+            {
+              "id": 10,
+              "state": "Delaware",
+              "avg_hatecrimes_per_100k_fbi": 1.469979563,
+              "median_household_income": 57522,
+              "share_unemployed_seasonal": 0.049,
+              "share_population_in_metro_areas": 0.9,
+              "share_population_with_high_school_degree": 0.8740000000000001,
+              "share_non_citizen": 0.05,
+              "share_white_poverty": 0.08,
+              "gini_index": 0.44,
+              "share_non_white": 0.37,
+              "share_voters_voted_trump": 0.42,
+              "hate_crimes_per_100k_splc": 0.322754169
+            },
+            {
+              "id": 11,
+              "state": "District of Columbia",
+              "avg_hatecrimes_per_100k_fbi": 10.95347971,
+              "median_household_income": 68277,
+              "share_unemployed_seasonal": 0.067,
+              "share_population_in_metro_areas": 1,
+              "share_population_with_high_school_degree": 0.871,
+              "share_non_citizen": 0.11,
+              "share_white_poverty": 0.04,
+              "gini_index": 0.532,
+              "share_non_white": 0.63,
+              "share_voters_voted_trump": 0.04,
+              "hate_crimes_per_100k_splc": 1.52230172
+            },
+            {
+              "id": 12,
+              "state": "Florida",
+              "avg_hatecrimes_per_100k_fbi": 0.6980703420000001,
+              "median_household_income": 46140,
+              "share_unemployed_seasonal": 0.052000000000000005,
+              "share_population_in_metro_areas": 0.96,
+              "share_population_with_high_school_degree": 0.853,
+              "share_non_citizen": 0.09,
+              "share_white_poverty": 0.11,
+              "gini_index": 0.474,
+              "share_non_white": 0.46,
+              "share_voters_voted_trump": 0.49,
+              "hate_crimes_per_100k_splc": 0.18752122300000001
+            },
+            {
+              "id": 13,
+              "state": "Georgia",
+              "avg_hatecrimes_per_100k_fbi": 0.41201182399999997,
+              "median_household_income": 49555,
+              "share_unemployed_seasonal": 0.057999999999999996,
+              "share_population_in_metro_areas": 0.82,
+              "share_population_with_high_school_degree": 0.8390000000000001,
+              "share_non_citizen": 0.08,
+              "share_white_poverty": 0.09,
+              "gini_index": 0.46799999999999997,
+              "share_non_white": 0.48,
+              "share_voters_voted_trump": 0.51,
+              "hate_crimes_per_100k_splc": 0.120420267
+            },
+            {
+              "id": 15,
+              "state": "Hawaii",
+              "avg_hatecrimes_per_100k_fbi": null,
+              "median_household_income": 71223,
+              "share_unemployed_seasonal": 0.034,
+              "share_population_in_metro_areas": 0.76,
+              "share_population_with_high_school_degree": 0.904,
+              "share_non_citizen": 0.08,
+              "share_white_poverty": 0.07,
+              "gini_index": 0.433,
+              "share_non_white": 0.81,
+              "share_voters_voted_trump": 0.3,
+              "hate_crimes_per_100k_splc": null
+            },
+            {
+              "id": 16,
+              "state": "Idaho",
+              "avg_hatecrimes_per_100k_fbi": 1.891330529,
+              "median_household_income": 53438,
+              "share_unemployed_seasonal": 0.042,
+              "share_population_in_metro_areas": 0.7,
+              "share_population_with_high_school_degree": 0.884,
+              "share_non_citizen": 0.04,
+              "share_white_poverty": 0.11,
+              "gini_index": 0.433,
+              "share_non_white": 0.16,
+              "share_voters_voted_trump": 0.59,
+              "hate_crimes_per_100k_splc": 0.124208173
+            },
+            {
+              "id": 17,
+              "state": "Illinois",
+              "avg_hatecrimes_per_100k_fbi": 1.044015798,
+              "median_household_income": 54916,
+              "share_unemployed_seasonal": 0.054000000000000006,
+              "share_population_in_metro_areas": 0.9,
+              "share_population_with_high_school_degree": 0.8640000000000001,
+              "share_non_citizen": 0.07,
+              "share_white_poverty": 0.07,
+              "gini_index": 0.465,
+              "share_non_white": 0.37,
+              "share_voters_voted_trump": 0.39,
+              "hate_crimes_per_100k_splc": 0.19534454899999998
+            },
+            {
+              "id": 18,
+              "state": "Indiana",
+              "avg_hatecrimes_per_100k_fbi": 1.757356567,
+              "median_household_income": 48060,
+              "share_unemployed_seasonal": 0.044000000000000004,
+              "share_population_in_metro_areas": 0.79,
+              "share_population_with_high_school_degree": 0.866,
+              "share_non_citizen": 0.03,
+              "share_white_poverty": 0.12,
+              "gini_index": 0.44,
+              "share_non_white": 0.2,
+              "share_voters_voted_trump": 0.57,
+              "hate_crimes_per_100k_splc": 0.247008877
+            },
+            {
+              "id": 19,
+              "state": "Iowa",
+              "avg_hatecrimes_per_100k_fbi": 0.561395565,
+              "median_household_income": 57810,
+              "share_unemployed_seasonal": 0.036000000000000004,
+              "share_population_in_metro_areas": 0.6,
+              "share_population_with_high_school_degree": 0.914,
+              "share_non_citizen": 0.03,
+              "share_white_poverty": 0.09,
+              "gini_index": 0.42700000000000005,
+              "share_non_white": 0.15,
+              "share_voters_voted_trump": 0.52,
+              "hate_crimes_per_100k_splc": 0.454427421
+            },
+            {
+              "id": 20,
+              "state": "Kansas",
+              "avg_hatecrimes_per_100k_fbi": 2.143986672,
+              "median_household_income": 53444,
+              "share_unemployed_seasonal": 0.044000000000000004,
+              "share_population_in_metro_areas": 0.64,
+              "share_population_with_high_school_degree": 0.897,
+              "share_non_citizen": 0.04,
+              "share_white_poverty": 0.11,
+              "gini_index": 0.445,
+              "share_non_white": 0.25,
+              "share_voters_voted_trump": 0.57,
+              "hate_crimes_per_100k_splc": 0.105152471
+            },
+            {
+              "id": 21,
+              "state": "Kentucky",
+              "avg_hatecrimes_per_100k_fbi": 4.2078896210000005,
+              "median_household_income": 42786,
+              "share_unemployed_seasonal": 0.05,
+              "share_population_in_metro_areas": 0.56,
+              "share_population_with_high_school_degree": 0.8170000000000001,
+              "share_non_citizen": 0.03,
+              "share_white_poverty": 0.17,
+              "gini_index": 0.466,
+              "share_non_white": 0.15,
+              "share_voters_voted_trump": 0.63,
+              "hate_crimes_per_100k_splc": 0.324396969
+            },
+            {
+              "id": 22,
+              "state": "Louisiana",
+              "avg_hatecrimes_per_100k_fbi": 1.3411695540000002,
+              "median_household_income": 42406,
+              "share_unemployed_seasonal": 0.06,
+              "share_population_in_metro_areas": 0.81,
+              "share_population_with_high_school_degree": 0.8220000000000001,
+              "share_non_citizen": 0.02,
+              "share_white_poverty": 0.12,
+              "gini_index": 0.475,
+              "share_non_white": 0.42,
+              "share_voters_voted_trump": 0.58,
+              "hate_crimes_per_100k_splc": 0.10973334800000001
+            },
+            {
+              "id": 23,
+              "state": "Maine",
+              "avg_hatecrimes_per_100k_fbi": 2.626610924,
+              "median_household_income": 51710,
+              "share_unemployed_seasonal": 0.044000000000000004,
+              "share_population_in_metro_areas": 0.54,
+              "share_population_with_high_school_degree": 0.902,
+              "share_non_citizen": null,
+              "share_white_poverty": 0.12,
+              "gini_index": 0.43700000000000006,
+              "share_non_white": 0.09,
+              "share_voters_voted_trump": 0.45,
+              "hate_crimes_per_100k_splc": 0.615574023
+            },
+            {
+              "id": 24,
+              "state": "Maryland",
+              "avg_hatecrimes_per_100k_fbi": 1.324839538,
+              "median_household_income": 76165,
+              "share_unemployed_seasonal": 0.051,
+              "share_population_in_metro_areas": 0.97,
+              "share_population_with_high_school_degree": 0.89,
+              "share_non_citizen": 0.08,
+              "share_white_poverty": 0.06,
+              "gini_index": 0.44299999999999995,
+              "share_non_white": 0.5,
+              "share_voters_voted_trump": 0.35,
+              "hate_crimes_per_100k_splc": 0.37043897
+            },
+            {
+              "id": 25,
+              "state": "Massachusetts",
+              "avg_hatecrimes_per_100k_fbi": 4.801899338999999,
+              "median_household_income": 63151,
+              "share_unemployed_seasonal": 0.046,
+              "share_population_in_metro_areas": 0.97,
+              "share_population_with_high_school_degree": 0.89,
+              "share_non_citizen": 0.09,
+              "share_white_poverty": 0.08,
+              "gini_index": 0.475,
+              "share_non_white": 0.27,
+              "share_voters_voted_trump": 0.34,
+              "hate_crimes_per_100k_splc": 0.630810592
+            },
+            {
+              "id": 26,
+              "state": "Michigan",
+              "avg_hatecrimes_per_100k_fbi": 3.200442266,
+              "median_household_income": 52005,
+              "share_unemployed_seasonal": 0.05,
+              "share_population_in_metro_areas": 0.87,
+              "share_population_with_high_school_degree": 0.879,
+              "share_non_citizen": 0.04,
+              "share_white_poverty": 0.09,
+              "gini_index": 0.451,
+              "share_non_white": 0.24,
+              "share_voters_voted_trump": 0.48,
+              "hate_crimes_per_100k_splc": 0.403779375
+            },
+            {
+              "id": 27,
+              "state": "Minnesota",
+              "avg_hatecrimes_per_100k_fbi": 3.6124118160000003,
+              "median_household_income": 67244,
+              "share_unemployed_seasonal": 0.038,
+              "share_population_in_metro_areas": 0.75,
+              "share_population_with_high_school_degree": 0.915,
+              "share_non_citizen": 0.05,
+              "share_white_poverty": 0.05,
+              "gini_index": 0.44,
+              "share_non_white": 0.18,
+              "share_voters_voted_trump": 0.45,
+              "hate_crimes_per_100k_splc": 0.62747993
+            },
+            {
+              "id": 28,
+              "state": "Mississippi",
+              "avg_hatecrimes_per_100k_fbi": 0.622745989,
+              "median_household_income": 35521,
+              "share_unemployed_seasonal": 0.061,
+              "share_population_in_metro_areas": 0.45,
+              "share_population_with_high_school_degree": 0.804,
+              "share_non_citizen": null,
+              "share_white_poverty": 0.14,
+              "gini_index": 0.46799999999999997,
+              "share_non_white": 0.44,
+              "share_voters_voted_trump": 0.58,
+              "hate_crimes_per_100k_splc": 0.067446801
+            },
+            {
+              "id": 29,
+              "state": "Missouri",
+              "avg_hatecrimes_per_100k_fbi": 1.9089549890000002,
+              "median_household_income": 56630,
+              "share_unemployed_seasonal": 0.053,
+              "share_population_in_metro_areas": 0.78,
+              "share_population_with_high_school_degree": 0.868,
+              "share_non_citizen": 0.02,
+              "share_white_poverty": 0.07,
+              "gini_index": 0.455,
+              "share_non_white": 0.2,
+              "share_voters_voted_trump": 0.57,
+              "hate_crimes_per_100k_splc": 0.18452351
+            },
+            {
+              "id": 30,
+              "state": "Montana",
+              "avg_hatecrimes_per_100k_fbi": 2.9549593780000003,
+              "median_household_income": 51102,
+              "share_unemployed_seasonal": 0.040999999999999995,
+              "share_population_in_metro_areas": 0.34,
+              "share_population_with_high_school_degree": 0.9079999999999999,
+              "share_non_citizen": 0.01,
+              "share_white_poverty": 0.1,
+              "gini_index": 0.435,
+              "share_non_white": 0.1,
+              "share_voters_voted_trump": 0.57,
+              "hate_crimes_per_100k_splc": 0.49549103200000005
+            },
+            {
+              "id": 31,
+              "state": "Nebraska",
+              "avg_hatecrimes_per_100k_fbi": 2.68624842,
+              "median_household_income": 56870,
+              "share_unemployed_seasonal": 0.028999999999999998,
+              "share_population_in_metro_areas": 0.6,
+              "share_population_with_high_school_degree": 0.898,
+              "share_non_citizen": 0.05,
+              "share_white_poverty": 0.07,
+              "gini_index": 0.43200000000000005,
+              "share_non_white": 0.21,
+              "share_voters_voted_trump": 0.6,
+              "hate_crimes_per_100k_splc": 0.15948963300000002
+            },
+            {
+              "id": 32,
+              "state": "Nevada",
+              "avg_hatecrimes_per_100k_fbi": 2.113990154,
+              "median_household_income": 49875,
+              "share_unemployed_seasonal": 0.067,
+              "share_population_in_metro_areas": 0.87,
+              "share_population_with_high_school_degree": 0.8390000000000001,
+              "share_non_citizen": 0.1,
+              "share_white_poverty": 0.08,
+              "gini_index": 0.44799999999999995,
+              "share_non_white": 0.5,
+              "share_voters_voted_trump": 0.46,
+              "hate_crimes_per_100k_splc": 0.14167316
+            },
+            {
+              "id": 33,
+              "state": "New Hampshire",
+              "avg_hatecrimes_per_100k_fbi": 2.105988585,
+              "median_household_income": 73397,
+              "share_unemployed_seasonal": 0.034,
+              "share_population_in_metro_areas": 0.63,
+              "share_population_with_high_school_degree": 0.9129999999999999,
+              "share_non_citizen": 0.03,
+              "share_white_poverty": 0.06,
+              "gini_index": 0.425,
+              "share_non_white": 0.09,
+              "share_voters_voted_trump": 0.47,
+              "hate_crimes_per_100k_splc": 0.151549595
+            },
+            {
+              "id": 34,
+              "state": "New Jersey",
+              "avg_hatecrimes_per_100k_fbi": 4.413202591,
+              "median_household_income": 65243,
+              "share_unemployed_seasonal": 0.055999999999999994,
+              "share_population_in_metro_areas": 1,
+              "share_population_with_high_school_degree": 0.8740000000000001,
+              "share_non_citizen": 0.11,
+              "share_white_poverty": 0.07,
+              "gini_index": 0.46399999999999997,
+              "share_non_white": 0.44,
+              "share_voters_voted_trump": 0.42,
+              "hate_crimes_per_100k_splc": 0.078305908
+            },
+            {
+              "id": 35,
+              "state": "New Mexico",
+              "avg_hatecrimes_per_100k_fbi": 1.886435184,
+              "median_household_income": 46686,
+              "share_unemployed_seasonal": 0.068,
+              "share_population_in_metro_areas": 0.69,
+              "share_population_with_high_school_degree": 0.828,
+              "share_non_citizen": 0.06,
+              "share_white_poverty": 0.1,
+              "gini_index": 0.46399999999999997,
+              "share_non_white": 0.62,
+              "share_voters_voted_trump": 0.4,
+              "hate_crimes_per_100k_splc": 0.294811321
+            },
+            {
+              "id": 36,
+              "state": "New York",
+              "avg_hatecrimes_per_100k_fbi": 3.1021642839999997,
+              "median_household_income": 54310,
+              "share_unemployed_seasonal": 0.051,
+              "share_population_in_metro_areas": 0.94,
+              "share_population_with_high_school_degree": 0.847,
+              "share_non_citizen": 0.1,
+              "share_white_poverty": 0.1,
+              "gini_index": 0.499,
+              "share_non_white": 0.42,
+              "share_voters_voted_trump": 0.37,
+              "hate_crimes_per_100k_splc": 0.35062044600000003
+            },
+            {
+              "id": 37,
+              "state": "North Carolina",
+              "avg_hatecrimes_per_100k_fbi": 1.262679796,
+              "median_household_income": 46784,
+              "share_unemployed_seasonal": 0.057999999999999996,
+              "share_population_in_metro_areas": 0.76,
+              "share_population_with_high_school_degree": 0.843,
+              "share_non_citizen": 0.05,
+              "share_white_poverty": 0.1,
+              "gini_index": 0.46399999999999997,
+              "share_non_white": 0.38,
+              "share_voters_voted_trump": 0.51,
+              "hate_crimes_per_100k_splc": 0.244006588
+            },
+            {
+              "id": 38,
+              "state": "North Dakota",
+              "avg_hatecrimes_per_100k_fbi": 4.741069885,
+              "median_household_income": 60730,
+              "share_unemployed_seasonal": 0.027999999999999997,
+              "share_population_in_metro_areas": 0.5,
+              "share_population_with_high_school_degree": 0.9009999999999999,
+              "share_non_citizen": 0.03,
+              "share_white_poverty": 0.09,
+              "gini_index": 0.433,
+              "share_non_white": 0.15,
+              "share_voters_voted_trump": 0.64,
+              "hate_crimes_per_100k_splc": null
+            },
+            {
+              "id": 39,
+              "state": "Ohio",
+              "avg_hatecrimes_per_100k_fbi": 3.240420404,
+              "median_household_income": 49644,
+              "share_unemployed_seasonal": 0.045,
+              "share_population_in_metro_areas": 0.75,
+              "share_population_with_high_school_degree": 0.8759999999999999,
+              "share_non_citizen": 0.03,
+              "share_white_poverty": 0.1,
+              "gini_index": 0.452,
+              "share_non_white": 0.21,
+              "share_voters_voted_trump": 0.52,
+              "hate_crimes_per_100k_splc": 0.19071396399999999
+            },
+            {
+              "id": 40,
+              "state": "Oklahoma",
+              "avg_hatecrimes_per_100k_fbi": 1.08167215,
+              "median_household_income": 47199,
+              "share_unemployed_seasonal": 0.044000000000000004,
+              "share_population_in_metro_areas": 0.59,
+              "share_population_with_high_school_degree": 0.856,
+              "share_non_citizen": 0.04,
+              "share_white_poverty": 0.1,
+              "gini_index": 0.45399999999999996,
+              "share_non_white": 0.35,
+              "share_voters_voted_trump": 0.65,
+              "hate_crimes_per_100k_splc": 0.133629099
+            },
+            {
+              "id": 41,
+              "state": "Oregon",
+              "avg_hatecrimes_per_100k_fbi": 3.394886113,
+              "median_household_income": 58875,
+              "share_unemployed_seasonal": 0.062,
+              "share_population_in_metro_areas": 0.87,
+              "share_population_with_high_school_degree": 0.8909999999999999,
+              "share_non_citizen": 0.07,
+              "share_white_poverty": 0.1,
+              "gini_index": 0.449,
+              "share_non_white": 0.26,
+              "share_voters_voted_trump": 0.41,
+              "hate_crimes_per_100k_splc": 0.832849608
+            },
+            {
+              "id": 42,
+              "state": "Pennsylvania",
+              "avg_hatecrimes_per_100k_fbi": 0.43092759,
+              "median_household_income": 55173,
+              "share_unemployed_seasonal": 0.053,
+              "share_population_in_metro_areas": 0.87,
+              "share_population_with_high_school_degree": 0.879,
+              "share_non_citizen": 0.03,
+              "share_white_poverty": 0.09,
+              "gini_index": 0.461,
+              "share_non_white": 0.24,
+              "share_voters_voted_trump": 0.49,
+              "hate_crimes_per_100k_splc": 0.285101092
+            },
+            {
+              "id": 44,
+              "state": "Rhode Island",
+              "avg_hatecrimes_per_100k_fbi": 1.282571834,
+              "median_household_income": 58633,
+              "share_unemployed_seasonal": 0.054000000000000006,
+              "share_population_in_metro_areas": 1,
+              "share_population_with_high_school_degree": 0.847,
+              "share_non_citizen": 0.08,
+              "share_white_poverty": 0.08,
+              "gini_index": 0.467,
+              "share_non_white": 0.28,
+              "share_voters_voted_trump": 0.4,
+              "hate_crimes_per_100k_splc": 0.095401641
+            },
+            {
+              "id": 45,
+              "state": "South Carolina",
+              "avg_hatecrimes_per_100k_fbi": 1.937082833,
+              "median_household_income": 44929,
+              "share_unemployed_seasonal": 0.057,
+              "share_population_in_metro_areas": 0.79,
+              "share_population_with_high_school_degree": 0.836,
+              "share_non_citizen": 0.03,
+              "share_white_poverty": 0.09,
+              "gini_index": 0.461,
+              "share_non_white": 0.36,
+              "share_voters_voted_trump": 0.55,
+              "hate_crimes_per_100k_splc": 0.209894423
+            },
+            {
+              "id": 46,
+              "state": "South Dakota",
+              "avg_hatecrimes_per_100k_fbi": 3.301737127,
+              "median_household_income": 53053,
+              "share_unemployed_seasonal": 0.035,
+              "share_population_in_metro_areas": 0.51,
+              "share_population_with_high_school_degree": 0.899,
+              "share_non_citizen": null,
+              "share_white_poverty": 0.08,
+              "gini_index": 0.442,
+              "share_non_white": 0.17,
+              "share_voters_voted_trump": 0.62,
+              "hate_crimes_per_100k_splc": null
+            },
+            {
+              "id": 47,
+              "state": "Tennessee",
+              "avg_hatecrimes_per_100k_fbi": 3.13605115,
+              "median_household_income": 43716,
+              "share_unemployed_seasonal": 0.057,
+              "share_population_in_metro_areas": 0.82,
+              "share_population_with_high_school_degree": 0.831,
+              "share_non_citizen": 0.04,
+              "share_white_poverty": 0.13,
+              "gini_index": 0.46799999999999997,
+              "share_non_white": 0.27,
+              "share_voters_voted_trump": 0.61,
+              "hate_crimes_per_100k_splc": 0.19993848
+            },
+            {
+              "id": 48,
+              "state": "Texas",
+              "avg_hatecrimes_per_100k_fbi": 0.752768305,
+              "median_household_income": 53875,
+              "share_unemployed_seasonal": 0.042,
+              "share_population_in_metro_areas": 0.92,
+              "share_population_with_high_school_degree": 0.799,
+              "share_non_citizen": 0.11,
+              "share_white_poverty": 0.08,
+              "gini_index": 0.469,
+              "share_non_white": 0.56,
+              "share_voters_voted_trump": 0.53,
+              "hate_crimes_per_100k_splc": 0.213583938
+            },
+            {
+              "id": 49,
+              "state": "Utah",
+              "avg_hatecrimes_per_100k_fbi": 2.384065044,
+              "median_household_income": 63383,
+              "share_unemployed_seasonal": 0.036000000000000004,
+              "share_population_in_metro_areas": 0.82,
+              "share_population_with_high_school_degree": 0.904,
+              "share_non_citizen": 0.04,
+              "share_white_poverty": 0.08,
+              "gini_index": 0.419,
+              "share_non_white": 0.19,
+              "share_voters_voted_trump": 0.47,
+              "hate_crimes_per_100k_splc": 0.136546733
+            },
+            {
+              "id": 50,
+              "state": "Vermont",
+              "avg_hatecrimes_per_100k_fbi": 1.90308139,
+              "median_household_income": 60708,
+              "share_unemployed_seasonal": 0.037000000000000005,
+              "share_population_in_metro_areas": 0.35,
+              "share_population_with_high_school_degree": 0.91,
+              "share_non_citizen": 0.01,
+              "share_white_poverty": 0.1,
+              "gini_index": 0.444,
+              "share_non_white": 0.06,
+              "share_voters_voted_trump": 0.33,
+              "hate_crimes_per_100k_splc": 0.324149109
+            },
+            {
+              "id": 51,
+              "state": "Virginia",
+              "avg_hatecrimes_per_100k_fbi": 1.724754584,
+              "median_household_income": 66155,
+              "share_unemployed_seasonal": 0.043,
+              "share_population_in_metro_areas": 0.89,
+              "share_population_with_high_school_degree": 0.866,
+              "share_non_citizen": 0.06,
+              "share_white_poverty": 0.07,
+              "gini_index": 0.45899999999999996,
+              "share_non_white": 0.38,
+              "share_voters_voted_trump": 0.45,
+              "hate_crimes_per_100k_splc": 0.363248898
+            },
+            {
+              "id": 53,
+              "state": "Washington",
+              "avg_hatecrimes_per_100k_fbi": 3.817740296,
+              "median_household_income": 59068,
+              "share_unemployed_seasonal": 0.052000000000000005,
+              "share_population_in_metro_areas": 0.86,
+              "share_population_with_high_school_degree": 0.897,
+              "share_non_citizen": 0.08,
+              "share_white_poverty": 0.09,
+              "gini_index": 0.441,
+              "share_non_white": 0.31,
+              "share_voters_voted_trump": 0.38,
+              "hate_crimes_per_100k_splc": 0.67748765
+            },
+            {
+              "id": 54,
+              "state": "West Virginia",
+              "avg_hatecrimes_per_100k_fbi": 2.037053631,
+              "median_household_income": 39552,
+              "share_unemployed_seasonal": 0.073,
+              "share_population_in_metro_areas": 0.55,
+              "share_population_with_high_school_degree": 0.828,
+              "share_non_citizen": 0.01,
+              "share_white_poverty": 0.14,
+              "gini_index": 0.451,
+              "share_non_white": 0.07,
+              "share_voters_voted_trump": 0.69,
+              "hate_crimes_per_100k_splc": 0.328677075
+            },
+            {
+              "id": 55,
+              "state": "Wisconsin",
+              "avg_hatecrimes_per_100k_fbi": 1.121944651,
+              "median_household_income": 58080,
+              "share_unemployed_seasonal": 0.043,
+              "share_population_in_metro_areas": 0.69,
+              "share_population_with_high_school_degree": 0.898,
+              "share_non_citizen": 0.03,
+              "share_white_poverty": 0.09,
+              "gini_index": 0.43,
+              "share_non_white": 0.22,
+              "share_voters_voted_trump": 0.48,
+              "hate_crimes_per_100k_splc": 0.226197105
+            },
+            {
+              "id": 56,
+              "state": "Wyoming",
+              "avg_hatecrimes_per_100k_fbi": 0.26694076,
+              "median_household_income": 55690,
+              "share_unemployed_seasonal": 0.04,
+              "share_population_in_metro_areas": 0.31,
+              "share_population_with_high_school_degree": 0.9179999999999999,
+              "share_non_citizen": 0.02,
+              "share_white_poverty": 0.09,
+              "gini_index": 0.423,
+              "share_non_white": 0.15,
+              "share_voters_voted_trump": 0.7,
+              "hate_crimes_per_100k_splc": null
+            }
+          ]
+        },
+        {
+          "name": "data_0",
+          "source": "data-039bb35c1359776590ac17ba1b0537cf",
+          "transform": [
+            {
+              "type": "filter",
+              "expr": "isValid(datum[\"median_household_income\"]) && isFinite(+datum[\"median_household_income\"]) && isValid(datum[\"share_non_citizen\"]) && isFinite(+datum[\"share_non_citizen\"]) && isValid(datum[\"gini_index\"]) && isFinite(+datum[\"gini_index\"]) && isValid(datum[\"avg_hatecrimes_per_100k_fbi\"]) && isFinite(+datum[\"avg_hatecrimes_per_100k_fbi\"])"
+            }
+          ]
+        }
+      ],
+      "marks": [
+        {
+          "name": "marks",
+          "type": "symbol",
+          "style": ["point"],
+          "from": {"data": "data_0"},
+          "encode": {
+            "update": {
+              "opacity": {"value": 0.6},
+              "fill": {"scale": "color", "field": "median_household_income"},
+              "tooltip": {
+                "signal": "{\"state\": ''+datum[\"state\"], \"avg_hatecrimes_per_100k_fbi\": format(datum[\"avg_hatecrimes_per_100k_fbi\"], \"\")}"
+              },
+              "x": [
+                {
+                  "test": "!isValid(datum[\"gini_index\"]) || !isFinite(+datum[\"gini_index\"])",
+                  "value": 0
+                },
+                {"scale": "x", "field": "gini_index"}
+              ],
+              "y": {"scale": "y", "field": "avg_hatecrimes_per_100k_fbi"},
+              "size": {"scale": "size", "field": "share_non_citizen"}
+            }
+          }
+        }
+      ],
+      "scales": [
+        {
+          "name": "x",
+          "type": "linear",
+          "domain": {"data": "data_0", "field": "gini_index"},
+          "range": [0, {"signal": "width"}],
+          "zero": false,
+          "nice": true
+        },
+        {
+          "name": "y",
+          "type": "linear",
+          "domain": {"data": "data_0", "field": "avg_hatecrimes_per_100k_fbi"},
+          "range": [{"signal": "height"}, 0],
+          "nice": true,
+          "zero": true
+        },
+        {
+          "name": "color",
+          "type": "linear",
+          "domain": {"data": "data_0", "field": "median_household_income"},
+          "range": "ramp",
+          "interpolate": "hcl",
+          "zero": false
+        },
+        {
+          "name": "size",
+          "type": "linear",
+          "domain": {"data": "data_0", "field": "share_non_citizen"},
+          "range": [0, 361],
+          "zero": true
+        }
+      ],
+      "axes": [
+        {
+          "scale": "x",
+          "orient": "bottom",
+          "gridScale": "y",
+          "grid": true,
+          "tickCount": {"signal": "ceil(width/40)"},
+          "domain": false,
+          "labels": false,
+          "maxExtent": 0,
+          "minExtent": 0,
+          "ticks": false,
+          "zindex": 0
+        },
+        {
+          "scale": "y",
+          "orient": "left",
+          "gridScale": "x",
+          "grid": true,
+          "tickCount": {"signal": "ceil(height/40)"},
+          "domain": false,
+          "labels": false,
+          "maxExtent": 0,
+          "minExtent": 0,
+          "ticks": false,
+          "zindex": 0
+        },
+        {
+          "scale": "x",
+          "orient": "bottom",
+          "grid": false,
+          "title": "gini_index",
+          "labelFlush": true,
+          "labelOverlap": true,
+          "tickCount": {"signal": "ceil(width/40)"},
+          "zindex": 0
+        },
+        {
+          "scale": "y",
+          "orient": "left",
+          "grid": false,
+          "title": "avg_hatecrimes_per_100k_fbi",
+          "labelOverlap": true,
+          "tickCount": {"signal": "ceil(height/40)"},
+          "zindex": 0
+        }
+      ],
+      "legends": [
+        {
+          "fill": "color",
+          "gradientLength": {"signal": "clamp(height, 64, 200)"},
+          "symbolType": "circle",
+          "title": "median_household_income",
+          "encode": {"gradient": {"update": {"opacity": {"value": 0.6}}}}
+        },
+        {
+          "size": "size",
+          "gradientLength": {"signal": "clamp(height, 64, 200)"},
+          "symbolType": "circle",
+          "title": "share_non_citizen",
+          "encode": {
+            "symbols": {
+              "update": {
+                "fill": {"value": "black"},
+                "fillOpacity": {"value": 0.6},
+                "opacity": {"value": 0.6},
+                "stroke": {"value": "transparent"}
+              }
+            }
+          }
+        }
+      ]
+    };
+    var opt4 = {"mode": "vega-lite"};
+
+    function showError(el, error){
+    el.innerHTML = ('<div class="error">'
+    + '<p>JavaScript Error: ' + error.message + '</p>'
+    + "<p>This usually means there's a typo in your chart specification. "
+    + "See the javascript console for the full traceback.</p>"
+    + '</div>');
+    throw error;
+    }
+    const el4 = document.getElementById('scat1');
+    vegaEmbed("#scat1", spec4, opt4)
+    .catch(error => showError(el4, error));
+  </script>
+
+  <div class="story">
+    <h2> Choropleth Maps Comparison </h2>
+  </div>
+
+  <div class="float-map">
+    <div class="float1">
+      <h3>Hate-Crime Correlation Choropleth Map</h2>
+
+      <div id="vis1"></div>
+      <script type="text/javascript">
+        var spec1 = {
+          "$schema": "https://vega.github.io/schema/vega/v5.json",
+          "background": "transparent",
+          "padding": 5,
+          "width": 600,
+          "height": 400,
+          "style": "cell",
+          "data": [
+            {
+              "name": "data-7b4cf88c886ffb15db9eab9f2b1ebf3e",
+              "values": [
+                {
+                  "id": 1,
+                  "state": "Alabama",
+                  "avg_hatecrimes_per_100k_fbi": 1.8064104890000001,
+                  "median_household_income": 42278,
+                  "share_unemployed_seasonal": 0.06,
+                  "share_population_in_metro_areas": 0.64,
+                  "share_population_with_high_school_degree": 0.821,
+                  "share_non_citizen": 0.02,
+                  "share_white_poverty": 0.12,
+                  "gini_index": 0.47200000000000003,
+                  "share_non_white": 0.35,
+                  "share_voters_voted_trump": 0.63,
+                  "hate_crimes_per_100k_splc": 0.125838926
+                },
+                {
+                  "id": 2,
+                  "state": "Alaska",
+                  "avg_hatecrimes_per_100k_fbi": 1.656700109,
+                  "median_household_income": 67629,
+                  "share_unemployed_seasonal": 0.064,
+                  "share_population_in_metro_areas": 0.63,
+                  "share_population_with_high_school_degree": 0.914,
+                  "share_non_citizen": 0.04,
+                  "share_white_poverty": 0.06,
+                  "gini_index": 0.42200000000000004,
+                  "share_non_white": 0.42,
+                  "share_voters_voted_trump": 0.53,
+                  "hate_crimes_per_100k_splc": 0.143740118
+                },
+                {
+                  "id": 4,
+                  "state": "Arizona",
+                  "avg_hatecrimes_per_100k_fbi": 3.413927994,
+                  "median_household_income": 49254,
+                  "share_unemployed_seasonal": 0.063,
+                  "share_population_in_metro_areas": 0.9,
+                  "share_population_with_high_school_degree": 0.8420000000000001,
+                  "share_non_citizen": 0.1,
+                  "share_white_poverty": 0.09,
+                  "gini_index": 0.455,
+                  "share_non_white": 0.49,
+                  "share_voters_voted_trump": 0.5,
+                  "hate_crimes_per_100k_splc": 0.225319954
+                },
+                {
+                  "id": 5,
+                  "state": "Arkansas",
+                  "avg_hatecrimes_per_100k_fbi": 0.8692088720000001,
+                  "median_household_income": 44922,
+                  "share_unemployed_seasonal": 0.052000000000000005,
+                  "share_population_in_metro_areas": 0.69,
+                  "share_population_with_high_school_degree": 0.8240000000000001,
+                  "share_non_citizen": 0.04,
+                  "share_white_poverty": 0.12,
+                  "gini_index": 0.45799999999999996,
+                  "share_non_white": 0.26,
+                  "share_voters_voted_trump": 0.6,
+                  "hate_crimes_per_100k_splc": 0.06906077299999999
+                },
+                {
+                  "id": 6,
+                  "state": "California",
+                  "avg_hatecrimes_per_100k_fbi": 2.397985899,
+                  "median_household_income": 60487,
+                  "share_unemployed_seasonal": 0.059000000000000004,
+                  "share_population_in_metro_areas": 0.97,
+                  "share_population_with_high_school_degree": 0.8059999999999999,
+                  "share_non_citizen": 0.13,
+                  "share_white_poverty": 0.09,
+                  "gini_index": 0.47100000000000003,
+                  "share_non_white": 0.61,
+                  "share_voters_voted_trump": 0.33,
+                  "hate_crimes_per_100k_splc": 0.255805361
+                },
+                {
+                  "id": 8,
+                  "state": "Colorado",
+                  "avg_hatecrimes_per_100k_fbi": 2.804688765,
+                  "median_household_income": 60940,
+                  "share_unemployed_seasonal": 0.04,
+                  "share_population_in_metro_areas": 0.8,
+                  "share_population_with_high_school_degree": 0.893,
+                  "share_non_citizen": 0.06,
+                  "share_white_poverty": 0.07,
+                  "gini_index": 0.457,
+                  "share_non_white": 0.31,
+                  "share_voters_voted_trump": 0.44,
+                  "hate_crimes_per_100k_splc": 0.390523301
+                },
+                {
+                  "id": 9,
+                  "state": "Connecticut",
+                  "avg_hatecrimes_per_100k_fbi": 3.772701469,
+                  "median_household_income": 70161,
+                  "share_unemployed_seasonal": 0.052000000000000005,
+                  "share_population_in_metro_areas": 0.94,
+                  "share_population_with_high_school_degree": 0.8859999999999999,
+                  "share_non_citizen": 0.06,
+                  "share_white_poverty": 0.06,
+                  "gini_index": 0.486,
+                  "share_non_white": 0.3,
+                  "share_voters_voted_trump": 0.41,
+                  "hate_crimes_per_100k_splc": 0.33539226899999997
+                },
+                {
+                  "id": 10,
+                  "state": "Delaware",
+                  "avg_hatecrimes_per_100k_fbi": 1.469979563,
+                  "median_household_income": 57522,
+                  "share_unemployed_seasonal": 0.049,
+                  "share_population_in_metro_areas": 0.9,
+                  "share_population_with_high_school_degree": 0.8740000000000001,
+                  "share_non_citizen": 0.05,
+                  "share_white_poverty": 0.08,
+                  "gini_index": 0.44,
+                  "share_non_white": 0.37,
+                  "share_voters_voted_trump": 0.42,
+                  "hate_crimes_per_100k_splc": 0.322754169
+                },
+                {
+                  "id": 12,
+                  "state": "Florida",
+                  "avg_hatecrimes_per_100k_fbi": 0.6980703420000001,
+                  "median_household_income": 46140,
+                  "share_unemployed_seasonal": 0.052000000000000005,
+                  "share_population_in_metro_areas": 0.96,
+                  "share_population_with_high_school_degree": 0.853,
+                  "share_non_citizen": 0.09,
+                  "share_white_poverty": 0.11,
+                  "gini_index": 0.474,
+                  "share_non_white": 0.46,
+                  "share_voters_voted_trump": 0.49,
+                  "hate_crimes_per_100k_splc": 0.18752122300000001
+                },
+                {
+                  "id": 13,
+                  "state": "Georgia",
+                  "avg_hatecrimes_per_100k_fbi": 0.41201182399999997,
+                  "median_household_income": 49555,
+                  "share_unemployed_seasonal": 0.057999999999999996,
+                  "share_population_in_metro_areas": 0.82,
+                  "share_population_with_high_school_degree": 0.8390000000000001,
+                  "share_non_citizen": 0.08,
+                  "share_white_poverty": 0.09,
+                  "gini_index": 0.46799999999999997,
+                  "share_non_white": 0.48,
+                  "share_voters_voted_trump": 0.51,
+                  "hate_crimes_per_100k_splc": 0.120420267
+                },
+                {
+                  "id": 15,
+                  "state": "Hawaii",
+                  "avg_hatecrimes_per_100k_fbi": null,
+                  "median_household_income": 71223,
+                  "share_unemployed_seasonal": 0.034,
+                  "share_population_in_metro_areas": 0.76,
+                  "share_population_with_high_school_degree": 0.904,
+                  "share_non_citizen": 0.08,
+                  "share_white_poverty": 0.07,
+                  "gini_index": 0.433,
+                  "share_non_white": 0.81,
+                  "share_voters_voted_trump": 0.3,
+                  "hate_crimes_per_100k_splc": null
+                },
+                {
+                  "id": 16,
+                  "state": "Idaho",
+                  "avg_hatecrimes_per_100k_fbi": 1.891330529,
+                  "median_household_income": 53438,
+                  "share_unemployed_seasonal": 0.042,
+                  "share_population_in_metro_areas": 0.7,
+                  "share_population_with_high_school_degree": 0.884,
+                  "share_non_citizen": 0.04,
+                  "share_white_poverty": 0.11,
+                  "gini_index": 0.433,
+                  "share_non_white": 0.16,
+                  "share_voters_voted_trump": 0.59,
+                  "hate_crimes_per_100k_splc": 0.124208173
+                },
+                {
+                  "id": 17,
+                  "state": "Illinois",
+                  "avg_hatecrimes_per_100k_fbi": 1.044015798,
+                  "median_household_income": 54916,
+                  "share_unemployed_seasonal": 0.054000000000000006,
+                  "share_population_in_metro_areas": 0.9,
+                  "share_population_with_high_school_degree": 0.8640000000000001,
+                  "share_non_citizen": 0.07,
+                  "share_white_poverty": 0.07,
+                  "gini_index": 0.465,
+                  "share_non_white": 0.37,
+                  "share_voters_voted_trump": 0.39,
+                  "hate_crimes_per_100k_splc": 0.19534454899999998
+                },
+                {
+                  "id": 18,
+                  "state": "Indiana",
+                  "avg_hatecrimes_per_100k_fbi": 1.757356567,
+                  "median_household_income": 48060,
+                  "share_unemployed_seasonal": 0.044000000000000004,
+                  "share_population_in_metro_areas": 0.79,
+                  "share_population_with_high_school_degree": 0.866,
+                  "share_non_citizen": 0.03,
+                  "share_white_poverty": 0.12,
+                  "gini_index": 0.44,
+                  "share_non_white": 0.2,
+                  "share_voters_voted_trump": 0.57,
+                  "hate_crimes_per_100k_splc": 0.247008877
+                },
+                {
+                  "id": 19,
+                  "state": "Iowa",
+                  "avg_hatecrimes_per_100k_fbi": 0.561395565,
+                  "median_household_income": 57810,
+                  "share_unemployed_seasonal": 0.036000000000000004,
+                  "share_population_in_metro_areas": 0.6,
+                  "share_population_with_high_school_degree": 0.914,
+                  "share_non_citizen": 0.03,
+                  "share_white_poverty": 0.09,
+                  "gini_index": 0.42700000000000005,
+                  "share_non_white": 0.15,
+                  "share_voters_voted_trump": 0.52,
+                  "hate_crimes_per_100k_splc": 0.454427421
+                },
+                {
+                  "id": 20,
+                  "state": "Kansas",
+                  "avg_hatecrimes_per_100k_fbi": 2.143986672,
+                  "median_household_income": 53444,
+                  "share_unemployed_seasonal": 0.044000000000000004,
+                  "share_population_in_metro_areas": 0.64,
+                  "share_population_with_high_school_degree": 0.897,
+                  "share_non_citizen": 0.04,
+                  "share_white_poverty": 0.11,
+                  "gini_index": 0.445,
+                  "share_non_white": 0.25,
+                  "share_voters_voted_trump": 0.57,
+                  "hate_crimes_per_100k_splc": 0.105152471
+                },
+                {
+                  "id": 21,
+                  "state": "Kentucky",
+                  "avg_hatecrimes_per_100k_fbi": 4.2078896210000005,
+                  "median_household_income": 42786,
+                  "share_unemployed_seasonal": 0.05,
+                  "share_population_in_metro_areas": 0.56,
+                  "share_population_with_high_school_degree": 0.8170000000000001,
+                  "share_non_citizen": 0.03,
+                  "share_white_poverty": 0.17,
+                  "gini_index": 0.466,
+                  "share_non_white": 0.15,
+                  "share_voters_voted_trump": 0.63,
+                  "hate_crimes_per_100k_splc": 0.324396969
+                },
+                {
+                  "id": 22,
+                  "state": "Louisiana",
+                  "avg_hatecrimes_per_100k_fbi": 1.3411695540000002,
+                  "median_household_income": 42406,
+                  "share_unemployed_seasonal": 0.06,
+                  "share_population_in_metro_areas": 0.81,
+                  "share_population_with_high_school_degree": 0.8220000000000001,
+                  "share_non_citizen": 0.02,
+                  "share_white_poverty": 0.12,
+                  "gini_index": 0.475,
+                  "share_non_white": 0.42,
+                  "share_voters_voted_trump": 0.58,
+                  "hate_crimes_per_100k_splc": 0.10973334800000001
+                },
+                {
+                  "id": 23,
+                  "state": "Maine",
+                  "avg_hatecrimes_per_100k_fbi": 2.626610924,
+                  "median_household_income": 51710,
+                  "share_unemployed_seasonal": 0.044000000000000004,
+                  "share_population_in_metro_areas": 0.54,
+                  "share_population_with_high_school_degree": 0.902,
+                  "share_non_citizen": null,
+                  "share_white_poverty": 0.12,
+                  "gini_index": 0.43700000000000006,
+                  "share_non_white": 0.09,
+                  "share_voters_voted_trump": 0.45,
+                  "hate_crimes_per_100k_splc": 0.615574023
+                },
+                {
+                  "id": 24,
+                  "state": "Maryland",
+                  "avg_hatecrimes_per_100k_fbi": 1.324839538,
+                  "median_household_income": 76165,
+                  "share_unemployed_seasonal": 0.051,
+                  "share_population_in_metro_areas": 0.97,
+                  "share_population_with_high_school_degree": 0.89,
+                  "share_non_citizen": 0.08,
+                  "share_white_poverty": 0.06,
+                  "gini_index": 0.44299999999999995,
+                  "share_non_white": 0.5,
+                  "share_voters_voted_trump": 0.35,
+                  "hate_crimes_per_100k_splc": 0.37043897
+                },
+                {
+                  "id": 25,
+                  "state": "Massachusetts",
+                  "avg_hatecrimes_per_100k_fbi": 4.801899338999999,
+                  "median_household_income": 63151,
+                  "share_unemployed_seasonal": 0.046,
+                  "share_population_in_metro_areas": 0.97,
+                  "share_population_with_high_school_degree": 0.89,
+                  "share_non_citizen": 0.09,
+                  "share_white_poverty": 0.08,
+                  "gini_index": 0.475,
+                  "share_non_white": 0.27,
+                  "share_voters_voted_trump": 0.34,
+                  "hate_crimes_per_100k_splc": 0.630810592
+                },
+                {
+                  "id": 26,
+                  "state": "Michigan",
+                  "avg_hatecrimes_per_100k_fbi": 3.200442266,
+                  "median_household_income": 52005,
+                  "share_unemployed_seasonal": 0.05,
+                  "share_population_in_metro_areas": 0.87,
+                  "share_population_with_high_school_degree": 0.879,
+                  "share_non_citizen": 0.04,
+                  "share_white_poverty": 0.09,
+                  "gini_index": 0.451,
+                  "share_non_white": 0.24,
+                  "share_voters_voted_trump": 0.48,
+                  "hate_crimes_per_100k_splc": 0.403779375
+                },
+                {
+                  "id": 27,
+                  "state": "Minnesota",
+                  "avg_hatecrimes_per_100k_fbi": 3.6124118160000003,
+                  "median_household_income": 67244,
+                  "share_unemployed_seasonal": 0.038,
+                  "share_population_in_metro_areas": 0.75,
+                  "share_population_with_high_school_degree": 0.915,
+                  "share_non_citizen": 0.05,
+                  "share_white_poverty": 0.05,
+                  "gini_index": 0.44,
+                  "share_non_white": 0.18,
+                  "share_voters_voted_trump": 0.45,
+                  "hate_crimes_per_100k_splc": 0.62747993
+                },
+                {
+                  "id": 28,
+                  "state": "Mississippi",
+                  "avg_hatecrimes_per_100k_fbi": 0.622745989,
+                  "median_household_income": 35521,
+                  "share_unemployed_seasonal": 0.061,
+                  "share_population_in_metro_areas": 0.45,
+                  "share_population_with_high_school_degree": 0.804,
+                  "share_non_citizen": null,
+                  "share_white_poverty": 0.14,
+                  "gini_index": 0.46799999999999997,
+                  "share_non_white": 0.44,
+                  "share_voters_voted_trump": 0.58,
+                  "hate_crimes_per_100k_splc": 0.067446801
+                },
+                {
+                  "id": 29,
+                  "state": "Missouri",
+                  "avg_hatecrimes_per_100k_fbi": 1.9089549890000002,
+                  "median_household_income": 56630,
+                  "share_unemployed_seasonal": 0.053,
+                  "share_population_in_metro_areas": 0.78,
+                  "share_population_with_high_school_degree": 0.868,
+                  "share_non_citizen": 0.02,
+                  "share_white_poverty": 0.07,
+                  "gini_index": 0.455,
+                  "share_non_white": 0.2,
+                  "share_voters_voted_trump": 0.57,
+                  "hate_crimes_per_100k_splc": 0.18452351
+                },
+                {
+                  "id": 30,
+                  "state": "Montana",
+                  "avg_hatecrimes_per_100k_fbi": 2.9549593780000003,
+                  "median_household_income": 51102,
+                  "share_unemployed_seasonal": 0.040999999999999995,
+                  "share_population_in_metro_areas": 0.34,
+                  "share_population_with_high_school_degree": 0.9079999999999999,
+                  "share_non_citizen": 0.01,
+                  "share_white_poverty": 0.1,
+                  "gini_index": 0.435,
+                  "share_non_white": 0.1,
+                  "share_voters_voted_trump": 0.57,
+                  "hate_crimes_per_100k_splc": 0.49549103200000005
+                },
+                {
+                  "id": 31,
+                  "state": "Nebraska",
+                  "avg_hatecrimes_per_100k_fbi": 2.68624842,
+                  "median_household_income": 56870,
+                  "share_unemployed_seasonal": 0.028999999999999998,
+                  "share_population_in_metro_areas": 0.6,
+                  "share_population_with_high_school_degree": 0.898,
+                  "share_non_citizen": 0.05,
+                  "share_white_poverty": 0.07,
+                  "gini_index": 0.43200000000000005,
+                  "share_non_white": 0.21,
+                  "share_voters_voted_trump": 0.6,
+                  "hate_crimes_per_100k_splc": 0.15948963300000002
+                },
+                {
+                  "id": 32,
+                  "state": "Nevada",
+                  "avg_hatecrimes_per_100k_fbi": 2.113990154,
+                  "median_household_income": 49875,
+                  "share_unemployed_seasonal": 0.067,
+                  "share_population_in_metro_areas": 0.87,
+                  "share_population_with_high_school_degree": 0.8390000000000001,
+                  "share_non_citizen": 0.1,
+                  "share_white_poverty": 0.08,
+                  "gini_index": 0.44799999999999995,
+                  "share_non_white": 0.5,
+                  "share_voters_voted_trump": 0.46,
+                  "hate_crimes_per_100k_splc": 0.14167316
+                },
+                {
+                  "id": 33,
+                  "state": "New Hampshire",
+                  "avg_hatecrimes_per_100k_fbi": 2.105988585,
+                  "median_household_income": 73397,
+                  "share_unemployed_seasonal": 0.034,
+                  "share_population_in_metro_areas": 0.63,
+                  "share_population_with_high_school_degree": 0.9129999999999999,
+                  "share_non_citizen": 0.03,
+                  "share_white_poverty": 0.06,
+                  "gini_index": 0.425,
+                  "share_non_white": 0.09,
+                  "share_voters_voted_trump": 0.47,
+                  "hate_crimes_per_100k_splc": 0.151549595
+                },
+                {
+                  "id": 34,
+                  "state": "New Jersey",
+                  "avg_hatecrimes_per_100k_fbi": 4.413202591,
+                  "median_household_income": 65243,
+                  "share_unemployed_seasonal": 0.055999999999999994,
+                  "share_population_in_metro_areas": 1,
+                  "share_population_with_high_school_degree": 0.8740000000000001,
+                  "share_non_citizen": 0.11,
+                  "share_white_poverty": 0.07,
+                  "gini_index": 0.46399999999999997,
+                  "share_non_white": 0.44,
+                  "share_voters_voted_trump": 0.42,
+                  "hate_crimes_per_100k_splc": 0.078305908
+                },
+                {
+                  "id": 35,
+                  "state": "New Mexico",
+                  "avg_hatecrimes_per_100k_fbi": 1.886435184,
+                  "median_household_income": 46686,
+                  "share_unemployed_seasonal": 0.068,
+                  "share_population_in_metro_areas": 0.69,
+                  "share_population_with_high_school_degree": 0.828,
+                  "share_non_citizen": 0.06,
+                  "share_white_poverty": 0.1,
+                  "gini_index": 0.46399999999999997,
+                  "share_non_white": 0.62,
+                  "share_voters_voted_trump": 0.4,
+                  "hate_crimes_per_100k_splc": 0.294811321
+                },
+                {
+                  "id": 36,
+                  "state": "New York",
+                  "avg_hatecrimes_per_100k_fbi": 3.1021642839999997,
+                  "median_household_income": 54310,
+                  "share_unemployed_seasonal": 0.051,
+                  "share_population_in_metro_areas": 0.94,
+                  "share_population_with_high_school_degree": 0.847,
+                  "share_non_citizen": 0.1,
+                  "share_white_poverty": 0.1,
+                  "gini_index": 0.499,
+                  "share_non_white": 0.42,
+                  "share_voters_voted_trump": 0.37,
+                  "hate_crimes_per_100k_splc": 0.35062044600000003
+                },
+                {
+                  "id": 37,
+                  "state": "North Carolina",
+                  "avg_hatecrimes_per_100k_fbi": 1.262679796,
+                  "median_household_income": 46784,
+                  "share_unemployed_seasonal": 0.057999999999999996,
+                  "share_population_in_metro_areas": 0.76,
+                  "share_population_with_high_school_degree": 0.843,
+                  "share_non_citizen": 0.05,
+                  "share_white_poverty": 0.1,
+                  "gini_index": 0.46399999999999997,
+                  "share_non_white": 0.38,
+                  "share_voters_voted_trump": 0.51,
+                  "hate_crimes_per_100k_splc": 0.244006588
+                },
+                {
+                  "id": 38,
+                  "state": "North Dakota",
+                  "avg_hatecrimes_per_100k_fbi": 4.741069885,
+                  "median_household_income": 60730,
+                  "share_unemployed_seasonal": 0.027999999999999997,
+                  "share_population_in_metro_areas": 0.5,
+                  "share_population_with_high_school_degree": 0.9009999999999999,
+                  "share_non_citizen": 0.03,
+                  "share_white_poverty": 0.09,
+                  "gini_index": 0.433,
+                  "share_non_white": 0.15,
+                  "share_voters_voted_trump": 0.64,
+                  "hate_crimes_per_100k_splc": null
+                },
+                {
+                  "id": 39,
+                  "state": "Ohio",
+                  "avg_hatecrimes_per_100k_fbi": 3.240420404,
+                  "median_household_income": 49644,
+                  "share_unemployed_seasonal": 0.045,
+                  "share_population_in_metro_areas": 0.75,
+                  "share_population_with_high_school_degree": 0.8759999999999999,
+                  "share_non_citizen": 0.03,
+                  "share_white_poverty": 0.1,
+                  "gini_index": 0.452,
+                  "share_non_white": 0.21,
+                  "share_voters_voted_trump": 0.52,
+                  "hate_crimes_per_100k_splc": 0.19071396399999999
+                },
+                {
+                  "id": 40,
+                  "state": "Oklahoma",
+                  "avg_hatecrimes_per_100k_fbi": 1.08167215,
+                  "median_household_income": 47199,
+                  "share_unemployed_seasonal": 0.044000000000000004,
+                  "share_population_in_metro_areas": 0.59,
+                  "share_population_with_high_school_degree": 0.856,
+                  "share_non_citizen": 0.04,
+                  "share_white_poverty": 0.1,
+                  "gini_index": 0.45399999999999996,
+                  "share_non_white": 0.35,
+                  "share_voters_voted_trump": 0.65,
+                  "hate_crimes_per_100k_splc": 0.133629099
+                },
+                {
+                  "id": 41,
+                  "state": "Oregon",
+                  "avg_hatecrimes_per_100k_fbi": 3.394886113,
+                  "median_household_income": 58875,
+                  "share_unemployed_seasonal": 0.062,
+                  "share_population_in_metro_areas": 0.87,
+                  "share_population_with_high_school_degree": 0.8909999999999999,
+                  "share_non_citizen": 0.07,
+                  "share_white_poverty": 0.1,
+                  "gini_index": 0.449,
+                  "share_non_white": 0.26,
+                  "share_voters_voted_trump": 0.41,
+                  "hate_crimes_per_100k_splc": 0.832849608
+                },
+                {
+                  "id": 42,
+                  "state": "Pennsylvania",
+                  "avg_hatecrimes_per_100k_fbi": 0.43092759,
+                  "median_household_income": 55173,
+                  "share_unemployed_seasonal": 0.053,
+                  "share_population_in_metro_areas": 0.87,
+                  "share_population_with_high_school_degree": 0.879,
+                  "share_non_citizen": 0.03,
+                  "share_white_poverty": 0.09,
+                  "gini_index": 0.461,
+                  "share_non_white": 0.24,
+                  "share_voters_voted_trump": 0.49,
+                  "hate_crimes_per_100k_splc": 0.285101092
+                },
+                {
+                  "id": 44,
+                  "state": "Rhode Island",
+                  "avg_hatecrimes_per_100k_fbi": 1.282571834,
+                  "median_household_income": 58633,
+                  "share_unemployed_seasonal": 0.054000000000000006,
+                  "share_population_in_metro_areas": 1,
+                  "share_population_with_high_school_degree": 0.847,
+                  "share_non_citizen": 0.08,
+                  "share_white_poverty": 0.08,
+                  "gini_index": 0.467,
+                  "share_non_white": 0.28,
+                  "share_voters_voted_trump": 0.4,
+                  "hate_crimes_per_100k_splc": 0.095401641
+                },
+                {
+                  "id": 45,
+                  "state": "South Carolina",
+                  "avg_hatecrimes_per_100k_fbi": 1.937082833,
+                  "median_household_income": 44929,
+                  "share_unemployed_seasonal": 0.057,
+                  "share_population_in_metro_areas": 0.79,
+                  "share_population_with_high_school_degree": 0.836,
+                  "share_non_citizen": 0.03,
+                  "share_white_poverty": 0.09,
+                  "gini_index": 0.461,
+                  "share_non_white": 0.36,
+                  "share_voters_voted_trump": 0.55,
+                  "hate_crimes_per_100k_splc": 0.209894423
+                },
+                {
+                  "id": 46,
+                  "state": "South Dakota",
+                  "avg_hatecrimes_per_100k_fbi": 3.301737127,
+                  "median_household_income": 53053,
+                  "share_unemployed_seasonal": 0.035,
+                  "share_population_in_metro_areas": 0.51,
+                  "share_population_with_high_school_degree": 0.899,
+                  "share_non_citizen": null,
+                  "share_white_poverty": 0.08,
+                  "gini_index": 0.442,
+                  "share_non_white": 0.17,
+                  "share_voters_voted_trump": 0.62,
+                  "hate_crimes_per_100k_splc": null
+                },
+                {
+                  "id": 47,
+                  "state": "Tennessee",
+                  "avg_hatecrimes_per_100k_fbi": 3.13605115,
+                  "median_household_income": 43716,
+                  "share_unemployed_seasonal": 0.057,
+                  "share_population_in_metro_areas": 0.82,
+                  "share_population_with_high_school_degree": 0.831,
+                  "share_non_citizen": 0.04,
+                  "share_white_poverty": 0.13,
+                  "gini_index": 0.46799999999999997,
+                  "share_non_white": 0.27,
+                  "share_voters_voted_trump": 0.61,
+                  "hate_crimes_per_100k_splc": 0.19993848
+                },
+                {
+                  "id": 48,
+                  "state": "Texas",
+                  "avg_hatecrimes_per_100k_fbi": 0.752768305,
+                  "median_household_income": 53875,
+                  "share_unemployed_seasonal": 0.042,
+                  "share_population_in_metro_areas": 0.92,
+                  "share_population_with_high_school_degree": 0.799,
+                  "share_non_citizen": 0.11,
+                  "share_white_poverty": 0.08,
+                  "gini_index": 0.469,
+                  "share_non_white": 0.56,
+                  "share_voters_voted_trump": 0.53,
+                  "hate_crimes_per_100k_splc": 0.213583938
+                },
+                {
+                  "id": 49,
+                  "state": "Utah",
+                  "avg_hatecrimes_per_100k_fbi": 2.384065044,
+                  "median_household_income": 63383,
+                  "share_unemployed_seasonal": 0.036000000000000004,
+                  "share_population_in_metro_areas": 0.82,
+                  "share_population_with_high_school_degree": 0.904,
+                  "share_non_citizen": 0.04,
+                  "share_white_poverty": 0.08,
+                  "gini_index": 0.419,
+                  "share_non_white": 0.19,
+                  "share_voters_voted_trump": 0.47,
+                  "hate_crimes_per_100k_splc": 0.136546733
+                },
+                {
+                  "id": 50,
+                  "state": "Vermont",
+                  "avg_hatecrimes_per_100k_fbi": 1.90308139,
+                  "median_household_income": 60708,
+                  "share_unemployed_seasonal": 0.037000000000000005,
+                  "share_population_in_metro_areas": 0.35,
+                  "share_population_with_high_school_degree": 0.91,
+                  "share_non_citizen": 0.01,
+                  "share_white_poverty": 0.1,
+                  "gini_index": 0.444,
+                  "share_non_white": 0.06,
+                  "share_voters_voted_trump": 0.33,
+                  "hate_crimes_per_100k_splc": 0.324149109
+                },
+                {
+                  "id": 51,
+                  "state": "Virginia",
+                  "avg_hatecrimes_per_100k_fbi": 1.724754584,
+                  "median_household_income": 66155,
+                  "share_unemployed_seasonal": 0.043,
+                  "share_population_in_metro_areas": 0.89,
+                  "share_population_with_high_school_degree": 0.866,
+                  "share_non_citizen": 0.06,
+                  "share_white_poverty": 0.07,
+                  "gini_index": 0.45899999999999996,
+                  "share_non_white": 0.38,
+                  "share_voters_voted_trump": 0.45,
+                  "hate_crimes_per_100k_splc": 0.363248898
+                },
+                {
+                  "id": 53,
+                  "state": "Washington",
+                  "avg_hatecrimes_per_100k_fbi": 3.817740296,
+                  "median_household_income": 59068,
+                  "share_unemployed_seasonal": 0.052000000000000005,
+                  "share_population_in_metro_areas": 0.86,
+                  "share_population_with_high_school_degree": 0.897,
+                  "share_non_citizen": 0.08,
+                  "share_white_poverty": 0.09,
+                  "gini_index": 0.441,
+                  "share_non_white": 0.31,
+                  "share_voters_voted_trump": 0.38,
+                  "hate_crimes_per_100k_splc": 0.67748765
+                },
+                {
+                  "id": 54,
+                  "state": "West Virginia",
+                  "avg_hatecrimes_per_100k_fbi": 2.037053631,
+                  "median_household_income": 39552,
+                  "share_unemployed_seasonal": 0.073,
+                  "share_population_in_metro_areas": 0.55,
+                  "share_population_with_high_school_degree": 0.828,
+                  "share_non_citizen": 0.01,
+                  "share_white_poverty": 0.14,
+                  "gini_index": 0.451,
+                  "share_non_white": 0.07,
+                  "share_voters_voted_trump": 0.69,
+                  "hate_crimes_per_100k_splc": 0.328677075
+                },
+                {
+                  "id": 55,
+                  "state": "Wisconsin",
+                  "avg_hatecrimes_per_100k_fbi": 1.121944651,
+                  "median_household_income": 58080,
+                  "share_unemployed_seasonal": 0.043,
+                  "share_population_in_metro_areas": 0.69,
+                  "share_population_with_high_school_degree": 0.898,
+                  "share_non_citizen": 0.03,
+                  "share_white_poverty": 0.09,
+                  "gini_index": 0.43,
+                  "share_non_white": 0.22,
+                  "share_voters_voted_trump": 0.48,
+                  "hate_crimes_per_100k_splc": 0.226197105
+                },
+                {
+                  "id": 56,
+                  "state": "Wyoming",
+                  "avg_hatecrimes_per_100k_fbi": 0.26694076,
+                  "median_household_income": 55690,
+                  "share_unemployed_seasonal": 0.04,
+                  "share_population_in_metro_areas": 0.31,
+                  "share_population_with_high_school_degree": 0.9179999999999999,
+                  "share_non_citizen": 0.02,
+                  "share_white_poverty": 0.09,
+                  "gini_index": 0.423,
+                  "share_non_white": 0.15,
+                  "share_voters_voted_trump": 0.7,
+                  "hate_crimes_per_100k_splc": null
+                }
+              ]
+            },
+            {
+              "name": "source_0",
+              "url": "https://cdn.jsdelivr.net/npm/vega-datasets@v1.29.0/data/us-10m.json",
+              "format": {"feature": "states", "type": "topojson"},
+              "transform": [
+                {
+                  "type": "lookup",
+                  "from": "data-7b4cf88c886ffb15db9eab9f2b1ebf3e",
+                  "key": "id",
+                  "fields": ["id"],
+                  "values": ["state", "avg_hatecrimes_per_100k_fbi"]
+                },
+                {
+                  "type": "filter",
+                  "expr": "isValid(datum[\"avg_hatecrimes_per_100k_fbi\"]) && isFinite(+datum[\"avg_hatecrimes_per_100k_fbi\"])"
+                }
+              ]
+            }
+          ],
+          "projections": [
+            {
+              "name": "projection",
+              "size": {"signal": "[width, height]"},
+              "fit": {"signal": "data('source_0')"},
+              "type": "albersUsa"
+            }
+          ],
+          "marks": [
+            {
+              "name": "marks",
+              "type": "shape",
+              "style": ["geoshape"],
+              "from": {"data": "source_0"},
+              "encode": {
+                "update": {
+                  "stroke": {"value": "white"},
+                  "width": {"value": 0.01},
+                  "fill": {"scale": "color", "field": "avg_hatecrimes_per_100k_fbi"},
+                  "tooltip": {
+                    "signal": "{\"State Name\": ''+datum[\"state\"], \"Avg HateCrime per 100k\": format(datum[\"avg_hatecrimes_per_100k_fbi\"], \".3\")}"
+                  }
+                }
+              },
+              "transform": [{"type": "geoshape", "projection": "projection"}]
+            }
+          ],
+          "scales": [
+            {
+              "name": "color",
+              "type": "linear",
+              "domain": {"data": "source_0", "field": "avg_hatecrimes_per_100k_fbi"},
+              "range": "heatmap",
+              "interpolate": "hcl",
+              "zero": false
+            }
+          ],
+          "legends": [
+            {
+              "fill": "color",
+              "gradientLength": 100,
+              "symbolType": "circle",
+              "title": "avg_hatecrimes_per_100k_fbi"
+            }
+          ],
+          "config": {"legend": {"direction": "horizontal", "orient": "bottom-right"}}
+        };
+        var opt1 = {"mode": "vega-lite"};
+
+      	function showError(el, error){
+      	el.innerHTML = ('<div class="error">'
+      	+ '<p>JavaScript Error: ' + error.message + '</p>'
+      	+ "<p>This usually means there's a typo in your chart specification. "
+      	+ "See the javascript console for the full traceback.</p>"
+      	+ '</div>');
+      	throw error;
+      	}
+      	const el1 = document.getElementById('vis1');
+      	vegaEmbed("#vis1", spec1, opt1)
+      	.catch(error => showError(el1, error));
+      </script>
+    </div>
+    <div class="float2">
+      <button id="btn1" onclick="myFunction('map1', 'map2', 'btn1', 'btn2')">Gini Index</button>
+      <button id="btn2" onclick="myFunction('map2', 'map1', 'btn2', 'btn1')">Median Household Income</button>
+      <div id="map1">
+        <!-- <h3>Gini Index Choropleth Map</h2> -->
+        <div id="vis2"></div>
+        <script type="text/javascript">
+          var spec2 = {
+            "$schema": "https://vega.github.io/schema/vega/v5.json",
+            "background": "white",
+            "padding": 5,
+            "width": 600,
+            "height": 400,
+            "style": "cell",
+            "data": [
+              {
+                "name": "data-039bb35c1359776590ac17ba1b0537cf",
+                "values": [
+                  {
+                    "id": 1,
+                    "state": "Alabama",
+                    "avg_hatecrimes_per_100k_fbi": 1.8064104890000001,
+                    "median_household_income": 42278,
+                    "share_unemployed_seasonal": 0.06,
+                    "share_population_in_metro_areas": 0.64,
+                    "share_population_with_high_school_degree": 0.821,
+                    "share_non_citizen": 0.02,
+                    "share_white_poverty": 0.12,
+                    "gini_index": 0.47200000000000003,
+                    "share_non_white": 0.35,
+                    "share_voters_voted_trump": 0.63,
+                    "hate_crimes_per_100k_splc": 0.125838926
+                  },
+                  {
+                    "id": 2,
+                    "state": "Alaska",
+                    "avg_hatecrimes_per_100k_fbi": 1.656700109,
+                    "median_household_income": 67629,
+                    "share_unemployed_seasonal": 0.064,
+                    "share_population_in_metro_areas": 0.63,
+                    "share_population_with_high_school_degree": 0.914,
+                    "share_non_citizen": 0.04,
+                    "share_white_poverty": 0.06,
+                    "gini_index": 0.42200000000000004,
+                    "share_non_white": 0.42,
+                    "share_voters_voted_trump": 0.53,
+                    "hate_crimes_per_100k_splc": 0.143740118
+                  },
+                  {
+                    "id": 4,
+                    "state": "Arizona",
+                    "avg_hatecrimes_per_100k_fbi": 3.413927994,
+                    "median_household_income": 49254,
+                    "share_unemployed_seasonal": 0.063,
+                    "share_population_in_metro_areas": 0.9,
+                    "share_population_with_high_school_degree": 0.8420000000000001,
+                    "share_non_citizen": 0.1,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.455,
+                    "share_non_white": 0.49,
+                    "share_voters_voted_trump": 0.5,
+                    "hate_crimes_per_100k_splc": 0.225319954
+                  },
+                  {
+                    "id": 5,
+                    "state": "Arkansas",
+                    "avg_hatecrimes_per_100k_fbi": 0.8692088720000001,
+                    "median_household_income": 44922,
+                    "share_unemployed_seasonal": 0.052000000000000005,
+                    "share_population_in_metro_areas": 0.69,
+                    "share_population_with_high_school_degree": 0.8240000000000001,
+                    "share_non_citizen": 0.04,
+                    "share_white_poverty": 0.12,
+                    "gini_index": 0.45799999999999996,
+                    "share_non_white": 0.26,
+                    "share_voters_voted_trump": 0.6,
+                    "hate_crimes_per_100k_splc": 0.06906077299999999
+                  },
+                  {
+                    "id": 6,
+                    "state": "California",
+                    "avg_hatecrimes_per_100k_fbi": 2.397985899,
+                    "median_household_income": 60487,
+                    "share_unemployed_seasonal": 0.059000000000000004,
+                    "share_population_in_metro_areas": 0.97,
+                    "share_population_with_high_school_degree": 0.8059999999999999,
+                    "share_non_citizen": 0.13,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.47100000000000003,
+                    "share_non_white": 0.61,
+                    "share_voters_voted_trump": 0.33,
+                    "hate_crimes_per_100k_splc": 0.255805361
+                  },
+                  {
+                    "id": 8,
+                    "state": "Colorado",
+                    "avg_hatecrimes_per_100k_fbi": 2.804688765,
+                    "median_household_income": 60940,
+                    "share_unemployed_seasonal": 0.04,
+                    "share_population_in_metro_areas": 0.8,
+                    "share_population_with_high_school_degree": 0.893,
+                    "share_non_citizen": 0.06,
+                    "share_white_poverty": 0.07,
+                    "gini_index": 0.457,
+                    "share_non_white": 0.31,
+                    "share_voters_voted_trump": 0.44,
+                    "hate_crimes_per_100k_splc": 0.390523301
+                  },
+                  {
+                    "id": 9,
+                    "state": "Connecticut",
+                    "avg_hatecrimes_per_100k_fbi": 3.772701469,
+                    "median_household_income": 70161,
+                    "share_unemployed_seasonal": 0.052000000000000005,
+                    "share_population_in_metro_areas": 0.94,
+                    "share_population_with_high_school_degree": 0.8859999999999999,
+                    "share_non_citizen": 0.06,
+                    "share_white_poverty": 0.06,
+                    "gini_index": 0.486,
+                    "share_non_white": 0.3,
+                    "share_voters_voted_trump": 0.41,
+                    "hate_crimes_per_100k_splc": 0.33539226899999997
+                  },
+                  {
+                    "id": 10,
+                    "state": "Delaware",
+                    "avg_hatecrimes_per_100k_fbi": 1.469979563,
+                    "median_household_income": 57522,
+                    "share_unemployed_seasonal": 0.049,
+                    "share_population_in_metro_areas": 0.9,
+                    "share_population_with_high_school_degree": 0.8740000000000001,
+                    "share_non_citizen": 0.05,
+                    "share_white_poverty": 0.08,
+                    "gini_index": 0.44,
+                    "share_non_white": 0.37,
+                    "share_voters_voted_trump": 0.42,
+                    "hate_crimes_per_100k_splc": 0.322754169
+                  },
+                  {
+                    "id": 11,
+                    "state": "District of Columbia",
+                    "avg_hatecrimes_per_100k_fbi": 10.95347971,
+                    "median_household_income": 68277,
+                    "share_unemployed_seasonal": 0.067,
+                    "share_population_in_metro_areas": 1,
+                    "share_population_with_high_school_degree": 0.871,
+                    "share_non_citizen": 0.11,
+                    "share_white_poverty": 0.04,
+                    "gini_index": 0.532,
+                    "share_non_white": 0.63,
+                    "share_voters_voted_trump": 0.04,
+                    "hate_crimes_per_100k_splc": 1.52230172
+                  },
+                  {
+                    "id": 12,
+                    "state": "Florida",
+                    "avg_hatecrimes_per_100k_fbi": 0.6980703420000001,
+                    "median_household_income": 46140,
+                    "share_unemployed_seasonal": 0.052000000000000005,
+                    "share_population_in_metro_areas": 0.96,
+                    "share_population_with_high_school_degree": 0.853,
+                    "share_non_citizen": 0.09,
+                    "share_white_poverty": 0.11,
+                    "gini_index": 0.474,
+                    "share_non_white": 0.46,
+                    "share_voters_voted_trump": 0.49,
+                    "hate_crimes_per_100k_splc": 0.18752122300000001
+                  },
+                  {
+                    "id": 13,
+                    "state": "Georgia",
+                    "avg_hatecrimes_per_100k_fbi": 0.41201182399999997,
+                    "median_household_income": 49555,
+                    "share_unemployed_seasonal": 0.057999999999999996,
+                    "share_population_in_metro_areas": 0.82,
+                    "share_population_with_high_school_degree": 0.8390000000000001,
+                    "share_non_citizen": 0.08,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.46799999999999997,
+                    "share_non_white": 0.48,
+                    "share_voters_voted_trump": 0.51,
+                    "hate_crimes_per_100k_splc": 0.120420267
+                  },
+                  {
+                    "id": 15,
+                    "state": "Hawaii",
+                    "avg_hatecrimes_per_100k_fbi": null,
+                    "median_household_income": 71223,
+                    "share_unemployed_seasonal": 0.034,
+                    "share_population_in_metro_areas": 0.76,
+                    "share_population_with_high_school_degree": 0.904,
+                    "share_non_citizen": 0.08,
+                    "share_white_poverty": 0.07,
+                    "gini_index": 0.433,
+                    "share_non_white": 0.81,
+                    "share_voters_voted_trump": 0.3,
+                    "hate_crimes_per_100k_splc": null
+                  },
+                  {
+                    "id": 16,
+                    "state": "Idaho",
+                    "avg_hatecrimes_per_100k_fbi": 1.891330529,
+                    "median_household_income": 53438,
+                    "share_unemployed_seasonal": 0.042,
+                    "share_population_in_metro_areas": 0.7,
+                    "share_population_with_high_school_degree": 0.884,
+                    "share_non_citizen": 0.04,
+                    "share_white_poverty": 0.11,
+                    "gini_index": 0.433,
+                    "share_non_white": 0.16,
+                    "share_voters_voted_trump": 0.59,
+                    "hate_crimes_per_100k_splc": 0.124208173
+                  },
+                  {
+                    "id": 17,
+                    "state": "Illinois",
+                    "avg_hatecrimes_per_100k_fbi": 1.044015798,
+                    "median_household_income": 54916,
+                    "share_unemployed_seasonal": 0.054000000000000006,
+                    "share_population_in_metro_areas": 0.9,
+                    "share_population_with_high_school_degree": 0.8640000000000001,
+                    "share_non_citizen": 0.07,
+                    "share_white_poverty": 0.07,
+                    "gini_index": 0.465,
+                    "share_non_white": 0.37,
+                    "share_voters_voted_trump": 0.39,
+                    "hate_crimes_per_100k_splc": 0.19534454899999998
+                  },
+                  {
+                    "id": 18,
+                    "state": "Indiana",
+                    "avg_hatecrimes_per_100k_fbi": 1.757356567,
+                    "median_household_income": 48060,
+                    "share_unemployed_seasonal": 0.044000000000000004,
+                    "share_population_in_metro_areas": 0.79,
+                    "share_population_with_high_school_degree": 0.866,
+                    "share_non_citizen": 0.03,
+                    "share_white_poverty": 0.12,
+                    "gini_index": 0.44,
+                    "share_non_white": 0.2,
+                    "share_voters_voted_trump": 0.57,
+                    "hate_crimes_per_100k_splc": 0.247008877
+                  },
+                  {
+                    "id": 19,
+                    "state": "Iowa",
+                    "avg_hatecrimes_per_100k_fbi": 0.561395565,
+                    "median_household_income": 57810,
+                    "share_unemployed_seasonal": 0.036000000000000004,
+                    "share_population_in_metro_areas": 0.6,
+                    "share_population_with_high_school_degree": 0.914,
+                    "share_non_citizen": 0.03,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.42700000000000005,
+                    "share_non_white": 0.15,
+                    "share_voters_voted_trump": 0.52,
+                    "hate_crimes_per_100k_splc": 0.454427421
+                  },
+                  {
+                    "id": 20,
+                    "state": "Kansas",
+                    "avg_hatecrimes_per_100k_fbi": 2.143986672,
+                    "median_household_income": 53444,
+                    "share_unemployed_seasonal": 0.044000000000000004,
+                    "share_population_in_metro_areas": 0.64,
+                    "share_population_with_high_school_degree": 0.897,
+                    "share_non_citizen": 0.04,
+                    "share_white_poverty": 0.11,
+                    "gini_index": 0.445,
+                    "share_non_white": 0.25,
+                    "share_voters_voted_trump": 0.57,
+                    "hate_crimes_per_100k_splc": 0.105152471
+                  },
+                  {
+                    "id": 21,
+                    "state": "Kentucky",
+                    "avg_hatecrimes_per_100k_fbi": 4.2078896210000005,
+                    "median_household_income": 42786,
+                    "share_unemployed_seasonal": 0.05,
+                    "share_population_in_metro_areas": 0.56,
+                    "share_population_with_high_school_degree": 0.8170000000000001,
+                    "share_non_citizen": 0.03,
+                    "share_white_poverty": 0.17,
+                    "gini_index": 0.466,
+                    "share_non_white": 0.15,
+                    "share_voters_voted_trump": 0.63,
+                    "hate_crimes_per_100k_splc": 0.324396969
+                  },
+                  {
+                    "id": 22,
+                    "state": "Louisiana",
+                    "avg_hatecrimes_per_100k_fbi": 1.3411695540000002,
+                    "median_household_income": 42406,
+                    "share_unemployed_seasonal": 0.06,
+                    "share_population_in_metro_areas": 0.81,
+                    "share_population_with_high_school_degree": 0.8220000000000001,
+                    "share_non_citizen": 0.02,
+                    "share_white_poverty": 0.12,
+                    "gini_index": 0.475,
+                    "share_non_white": 0.42,
+                    "share_voters_voted_trump": 0.58,
+                    "hate_crimes_per_100k_splc": 0.10973334800000001
+                  },
+                  {
+                    "id": 23,
+                    "state": "Maine",
+                    "avg_hatecrimes_per_100k_fbi": 2.626610924,
+                    "median_household_income": 51710,
+                    "share_unemployed_seasonal": 0.044000000000000004,
+                    "share_population_in_metro_areas": 0.54,
+                    "share_population_with_high_school_degree": 0.902,
+                    "share_non_citizen": null,
+                    "share_white_poverty": 0.12,
+                    "gini_index": 0.43700000000000006,
+                    "share_non_white": 0.09,
+                    "share_voters_voted_trump": 0.45,
+                    "hate_crimes_per_100k_splc": 0.615574023
+                  },
+                  {
+                    "id": 24,
+                    "state": "Maryland",
+                    "avg_hatecrimes_per_100k_fbi": 1.324839538,
+                    "median_household_income": 76165,
+                    "share_unemployed_seasonal": 0.051,
+                    "share_population_in_metro_areas": 0.97,
+                    "share_population_with_high_school_degree": 0.89,
+                    "share_non_citizen": 0.08,
+                    "share_white_poverty": 0.06,
+                    "gini_index": 0.44299999999999995,
+                    "share_non_white": 0.5,
+                    "share_voters_voted_trump": 0.35,
+                    "hate_crimes_per_100k_splc": 0.37043897
+                  },
+                  {
+                    "id": 25,
+                    "state": "Massachusetts",
+                    "avg_hatecrimes_per_100k_fbi": 4.801899338999999,
+                    "median_household_income": 63151,
+                    "share_unemployed_seasonal": 0.046,
+                    "share_population_in_metro_areas": 0.97,
+                    "share_population_with_high_school_degree": 0.89,
+                    "share_non_citizen": 0.09,
+                    "share_white_poverty": 0.08,
+                    "gini_index": 0.475,
+                    "share_non_white": 0.27,
+                    "share_voters_voted_trump": 0.34,
+                    "hate_crimes_per_100k_splc": 0.630810592
+                  },
+                  {
+                    "id": 26,
+                    "state": "Michigan",
+                    "avg_hatecrimes_per_100k_fbi": 3.200442266,
+                    "median_household_income": 52005,
+                    "share_unemployed_seasonal": 0.05,
+                    "share_population_in_metro_areas": 0.87,
+                    "share_population_with_high_school_degree": 0.879,
+                    "share_non_citizen": 0.04,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.451,
+                    "share_non_white": 0.24,
+                    "share_voters_voted_trump": 0.48,
+                    "hate_crimes_per_100k_splc": 0.403779375
+                  },
+                  {
+                    "id": 27,
+                    "state": "Minnesota",
+                    "avg_hatecrimes_per_100k_fbi": 3.6124118160000003,
+                    "median_household_income": 67244,
+                    "share_unemployed_seasonal": 0.038,
+                    "share_population_in_metro_areas": 0.75,
+                    "share_population_with_high_school_degree": 0.915,
+                    "share_non_citizen": 0.05,
+                    "share_white_poverty": 0.05,
+                    "gini_index": 0.44,
+                    "share_non_white": 0.18,
+                    "share_voters_voted_trump": 0.45,
+                    "hate_crimes_per_100k_splc": 0.62747993
+                  },
+                  {
+                    "id": 28,
+                    "state": "Mississippi",
+                    "avg_hatecrimes_per_100k_fbi": 0.622745989,
+                    "median_household_income": 35521,
+                    "share_unemployed_seasonal": 0.061,
+                    "share_population_in_metro_areas": 0.45,
+                    "share_population_with_high_school_degree": 0.804,
+                    "share_non_citizen": null,
+                    "share_white_poverty": 0.14,
+                    "gini_index": 0.46799999999999997,
+                    "share_non_white": 0.44,
+                    "share_voters_voted_trump": 0.58,
+                    "hate_crimes_per_100k_splc": 0.067446801
+                  },
+                  {
+                    "id": 29,
+                    "state": "Missouri",
+                    "avg_hatecrimes_per_100k_fbi": 1.9089549890000002,
+                    "median_household_income": 56630,
+                    "share_unemployed_seasonal": 0.053,
+                    "share_population_in_metro_areas": 0.78,
+                    "share_population_with_high_school_degree": 0.868,
+                    "share_non_citizen": 0.02,
+                    "share_white_poverty": 0.07,
+                    "gini_index": 0.455,
+                    "share_non_white": 0.2,
+                    "share_voters_voted_trump": 0.57,
+                    "hate_crimes_per_100k_splc": 0.18452351
+                  },
+                  {
+                    "id": 30,
+                    "state": "Montana",
+                    "avg_hatecrimes_per_100k_fbi": 2.9549593780000003,
+                    "median_household_income": 51102,
+                    "share_unemployed_seasonal": 0.040999999999999995,
+                    "share_population_in_metro_areas": 0.34,
+                    "share_population_with_high_school_degree": 0.9079999999999999,
+                    "share_non_citizen": 0.01,
+                    "share_white_poverty": 0.1,
+                    "gini_index": 0.435,
+                    "share_non_white": 0.1,
+                    "share_voters_voted_trump": 0.57,
+                    "hate_crimes_per_100k_splc": 0.49549103200000005
+                  },
+                  {
+                    "id": 31,
+                    "state": "Nebraska",
+                    "avg_hatecrimes_per_100k_fbi": 2.68624842,
+                    "median_household_income": 56870,
+                    "share_unemployed_seasonal": 0.028999999999999998,
+                    "share_population_in_metro_areas": 0.6,
+                    "share_population_with_high_school_degree": 0.898,
+                    "share_non_citizen": 0.05,
+                    "share_white_poverty": 0.07,
+                    "gini_index": 0.43200000000000005,
+                    "share_non_white": 0.21,
+                    "share_voters_voted_trump": 0.6,
+                    "hate_crimes_per_100k_splc": 0.15948963300000002
+                  },
+                  {
+                    "id": 32,
+                    "state": "Nevada",
+                    "avg_hatecrimes_per_100k_fbi": 2.113990154,
+                    "median_household_income": 49875,
+                    "share_unemployed_seasonal": 0.067,
+                    "share_population_in_metro_areas": 0.87,
+                    "share_population_with_high_school_degree": 0.8390000000000001,
+                    "share_non_citizen": 0.1,
+                    "share_white_poverty": 0.08,
+                    "gini_index": 0.44799999999999995,
+                    "share_non_white": 0.5,
+                    "share_voters_voted_trump": 0.46,
+                    "hate_crimes_per_100k_splc": 0.14167316
+                  },
+                  {
+                    "id": 33,
+                    "state": "New Hampshire",
+                    "avg_hatecrimes_per_100k_fbi": 2.105988585,
+                    "median_household_income": 73397,
+                    "share_unemployed_seasonal": 0.034,
+                    "share_population_in_metro_areas": 0.63,
+                    "share_population_with_high_school_degree": 0.9129999999999999,
+                    "share_non_citizen": 0.03,
+                    "share_white_poverty": 0.06,
+                    "gini_index": 0.425,
+                    "share_non_white": 0.09,
+                    "share_voters_voted_trump": 0.47,
+                    "hate_crimes_per_100k_splc": 0.151549595
+                  },
+                  {
+                    "id": 34,
+                    "state": "New Jersey",
+                    "avg_hatecrimes_per_100k_fbi": 4.413202591,
+                    "median_household_income": 65243,
+                    "share_unemployed_seasonal": 0.055999999999999994,
+                    "share_population_in_metro_areas": 1,
+                    "share_population_with_high_school_degree": 0.8740000000000001,
+                    "share_non_citizen": 0.11,
+                    "share_white_poverty": 0.07,
+                    "gini_index": 0.46399999999999997,
+                    "share_non_white": 0.44,
+                    "share_voters_voted_trump": 0.42,
+                    "hate_crimes_per_100k_splc": 0.078305908
+                  },
+                  {
+                    "id": 35,
+                    "state": "New Mexico",
+                    "avg_hatecrimes_per_100k_fbi": 1.886435184,
+                    "median_household_income": 46686,
+                    "share_unemployed_seasonal": 0.068,
+                    "share_population_in_metro_areas": 0.69,
+                    "share_population_with_high_school_degree": 0.828,
+                    "share_non_citizen": 0.06,
+                    "share_white_poverty": 0.1,
+                    "gini_index": 0.46399999999999997,
+                    "share_non_white": 0.62,
+                    "share_voters_voted_trump": 0.4,
+                    "hate_crimes_per_100k_splc": 0.294811321
+                  },
+                  {
+                    "id": 36,
+                    "state": "New York",
+                    "avg_hatecrimes_per_100k_fbi": 3.1021642839999997,
+                    "median_household_income": 54310,
+                    "share_unemployed_seasonal": 0.051,
+                    "share_population_in_metro_areas": 0.94,
+                    "share_population_with_high_school_degree": 0.847,
+                    "share_non_citizen": 0.1,
+                    "share_white_poverty": 0.1,
+                    "gini_index": 0.499,
+                    "share_non_white": 0.42,
+                    "share_voters_voted_trump": 0.37,
+                    "hate_crimes_per_100k_splc": 0.35062044600000003
+                  },
+                  {
+                    "id": 37,
+                    "state": "North Carolina",
+                    "avg_hatecrimes_per_100k_fbi": 1.262679796,
+                    "median_household_income": 46784,
+                    "share_unemployed_seasonal": 0.057999999999999996,
+                    "share_population_in_metro_areas": 0.76,
+                    "share_population_with_high_school_degree": 0.843,
+                    "share_non_citizen": 0.05,
+                    "share_white_poverty": 0.1,
+                    "gini_index": 0.46399999999999997,
+                    "share_non_white": 0.38,
+                    "share_voters_voted_trump": 0.51,
+                    "hate_crimes_per_100k_splc": 0.244006588
+                  },
+                  {
+                    "id": 38,
+                    "state": "North Dakota",
+                    "avg_hatecrimes_per_100k_fbi": 4.741069885,
+                    "median_household_income": 60730,
+                    "share_unemployed_seasonal": 0.027999999999999997,
+                    "share_population_in_metro_areas": 0.5,
+                    "share_population_with_high_school_degree": 0.9009999999999999,
+                    "share_non_citizen": 0.03,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.433,
+                    "share_non_white": 0.15,
+                    "share_voters_voted_trump": 0.64,
+                    "hate_crimes_per_100k_splc": null
+                  },
+                  {
+                    "id": 39,
+                    "state": "Ohio",
+                    "avg_hatecrimes_per_100k_fbi": 3.240420404,
+                    "median_household_income": 49644,
+                    "share_unemployed_seasonal": 0.045,
+                    "share_population_in_metro_areas": 0.75,
+                    "share_population_with_high_school_degree": 0.8759999999999999,
+                    "share_non_citizen": 0.03,
+                    "share_white_poverty": 0.1,
+                    "gini_index": 0.452,
+                    "share_non_white": 0.21,
+                    "share_voters_voted_trump": 0.52,
+                    "hate_crimes_per_100k_splc": 0.19071396399999999
+                  },
+                  {
+                    "id": 40,
+                    "state": "Oklahoma",
+                    "avg_hatecrimes_per_100k_fbi": 1.08167215,
+                    "median_household_income": 47199,
+                    "share_unemployed_seasonal": 0.044000000000000004,
+                    "share_population_in_metro_areas": 0.59,
+                    "share_population_with_high_school_degree": 0.856,
+                    "share_non_citizen": 0.04,
+                    "share_white_poverty": 0.1,
+                    "gini_index": 0.45399999999999996,
+                    "share_non_white": 0.35,
+                    "share_voters_voted_trump": 0.65,
+                    "hate_crimes_per_100k_splc": 0.133629099
+                  },
+                  {
+                    "id": 41,
+                    "state": "Oregon",
+                    "avg_hatecrimes_per_100k_fbi": 3.394886113,
+                    "median_household_income": 58875,
+                    "share_unemployed_seasonal": 0.062,
+                    "share_population_in_metro_areas": 0.87,
+                    "share_population_with_high_school_degree": 0.8909999999999999,
+                    "share_non_citizen": 0.07,
+                    "share_white_poverty": 0.1,
+                    "gini_index": 0.449,
+                    "share_non_white": 0.26,
+                    "share_voters_voted_trump": 0.41,
+                    "hate_crimes_per_100k_splc": 0.832849608
+                  },
+                  {
+                    "id": 42,
+                    "state": "Pennsylvania",
+                    "avg_hatecrimes_per_100k_fbi": 0.43092759,
+                    "median_household_income": 55173,
+                    "share_unemployed_seasonal": 0.053,
+                    "share_population_in_metro_areas": 0.87,
+                    "share_population_with_high_school_degree": 0.879,
+                    "share_non_citizen": 0.03,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.461,
+                    "share_non_white": 0.24,
+                    "share_voters_voted_trump": 0.49,
+                    "hate_crimes_per_100k_splc": 0.285101092
+                  },
+                  {
+                    "id": 44,
+                    "state": "Rhode Island",
+                    "avg_hatecrimes_per_100k_fbi": 1.282571834,
+                    "median_household_income": 58633,
+                    "share_unemployed_seasonal": 0.054000000000000006,
+                    "share_population_in_metro_areas": 1,
+                    "share_population_with_high_school_degree": 0.847,
+                    "share_non_citizen": 0.08,
+                    "share_white_poverty": 0.08,
+                    "gini_index": 0.467,
+                    "share_non_white": 0.28,
+                    "share_voters_voted_trump": 0.4,
+                    "hate_crimes_per_100k_splc": 0.095401641
+                  },
+                  {
+                    "id": 45,
+                    "state": "South Carolina",
+                    "avg_hatecrimes_per_100k_fbi": 1.937082833,
+                    "median_household_income": 44929,
+                    "share_unemployed_seasonal": 0.057,
+                    "share_population_in_metro_areas": 0.79,
+                    "share_population_with_high_school_degree": 0.836,
+                    "share_non_citizen": 0.03,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.461,
+                    "share_non_white": 0.36,
+                    "share_voters_voted_trump": 0.55,
+                    "hate_crimes_per_100k_splc": 0.209894423
+                  },
+                  {
+                    "id": 46,
+                    "state": "South Dakota",
+                    "avg_hatecrimes_per_100k_fbi": 3.301737127,
+                    "median_household_income": 53053,
+                    "share_unemployed_seasonal": 0.035,
+                    "share_population_in_metro_areas": 0.51,
+                    "share_population_with_high_school_degree": 0.899,
+                    "share_non_citizen": null,
+                    "share_white_poverty": 0.08,
+                    "gini_index": 0.442,
+                    "share_non_white": 0.17,
+                    "share_voters_voted_trump": 0.62,
+                    "hate_crimes_per_100k_splc": null
+                  },
+                  {
+                    "id": 47,
+                    "state": "Tennessee",
+                    "avg_hatecrimes_per_100k_fbi": 3.13605115,
+                    "median_household_income": 43716,
+                    "share_unemployed_seasonal": 0.057,
+                    "share_population_in_metro_areas": 0.82,
+                    "share_population_with_high_school_degree": 0.831,
+                    "share_non_citizen": 0.04,
+                    "share_white_poverty": 0.13,
+                    "gini_index": 0.46799999999999997,
+                    "share_non_white": 0.27,
+                    "share_voters_voted_trump": 0.61,
+                    "hate_crimes_per_100k_splc": 0.19993848
+                  },
+                  {
+                    "id": 48,
+                    "state": "Texas",
+                    "avg_hatecrimes_per_100k_fbi": 0.752768305,
+                    "median_household_income": 53875,
+                    "share_unemployed_seasonal": 0.042,
+                    "share_population_in_metro_areas": 0.92,
+                    "share_population_with_high_school_degree": 0.799,
+                    "share_non_citizen": 0.11,
+                    "share_white_poverty": 0.08,
+                    "gini_index": 0.469,
+                    "share_non_white": 0.56,
+                    "share_voters_voted_trump": 0.53,
+                    "hate_crimes_per_100k_splc": 0.213583938
+                  },
+                  {
+                    "id": 49,
+                    "state": "Utah",
+                    "avg_hatecrimes_per_100k_fbi": 2.384065044,
+                    "median_household_income": 63383,
+                    "share_unemployed_seasonal": 0.036000000000000004,
+                    "share_population_in_metro_areas": 0.82,
+                    "share_population_with_high_school_degree": 0.904,
+                    "share_non_citizen": 0.04,
+                    "share_white_poverty": 0.08,
+                    "gini_index": 0.419,
+                    "share_non_white": 0.19,
+                    "share_voters_voted_trump": 0.47,
+                    "hate_crimes_per_100k_splc": 0.136546733
+                  },
+                  {
+                    "id": 50,
+                    "state": "Vermont",
+                    "avg_hatecrimes_per_100k_fbi": 1.90308139,
+                    "median_household_income": 60708,
+                    "share_unemployed_seasonal": 0.037000000000000005,
+                    "share_population_in_metro_areas": 0.35,
+                    "share_population_with_high_school_degree": 0.91,
+                    "share_non_citizen": 0.01,
+                    "share_white_poverty": 0.1,
+                    "gini_index": 0.444,
+                    "share_non_white": 0.06,
+                    "share_voters_voted_trump": 0.33,
+                    "hate_crimes_per_100k_splc": 0.324149109
+                  },
+                  {
+                    "id": 51,
+                    "state": "Virginia",
+                    "avg_hatecrimes_per_100k_fbi": 1.724754584,
+                    "median_household_income": 66155,
+                    "share_unemployed_seasonal": 0.043,
+                    "share_population_in_metro_areas": 0.89,
+                    "share_population_with_high_school_degree": 0.866,
+                    "share_non_citizen": 0.06,
+                    "share_white_poverty": 0.07,
+                    "gini_index": 0.45899999999999996,
+                    "share_non_white": 0.38,
+                    "share_voters_voted_trump": 0.45,
+                    "hate_crimes_per_100k_splc": 0.363248898
+                  },
+                  {
+                    "id": 53,
+                    "state": "Washington",
+                    "avg_hatecrimes_per_100k_fbi": 3.817740296,
+                    "median_household_income": 59068,
+                    "share_unemployed_seasonal": 0.052000000000000005,
+                    "share_population_in_metro_areas": 0.86,
+                    "share_population_with_high_school_degree": 0.897,
+                    "share_non_citizen": 0.08,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.441,
+                    "share_non_white": 0.31,
+                    "share_voters_voted_trump": 0.38,
+                    "hate_crimes_per_100k_splc": 0.67748765
+                  },
+                  {
+                    "id": 54,
+                    "state": "West Virginia",
+                    "avg_hatecrimes_per_100k_fbi": 2.037053631,
+                    "median_household_income": 39552,
+                    "share_unemployed_seasonal": 0.073,
+                    "share_population_in_metro_areas": 0.55,
+                    "share_population_with_high_school_degree": 0.828,
+                    "share_non_citizen": 0.01,
+                    "share_white_poverty": 0.14,
+                    "gini_index": 0.451,
+                    "share_non_white": 0.07,
+                    "share_voters_voted_trump": 0.69,
+                    "hate_crimes_per_100k_splc": 0.328677075
+                  },
+                  {
+                    "id": 55,
+                    "state": "Wisconsin",
+                    "avg_hatecrimes_per_100k_fbi": 1.121944651,
+                    "median_household_income": 58080,
+                    "share_unemployed_seasonal": 0.043,
+                    "share_population_in_metro_areas": 0.69,
+                    "share_population_with_high_school_degree": 0.898,
+                    "share_non_citizen": 0.03,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.43,
+                    "share_non_white": 0.22,
+                    "share_voters_voted_trump": 0.48,
+                    "hate_crimes_per_100k_splc": 0.226197105
+                  },
+                  {
+                    "id": 56,
+                    "state": "Wyoming",
+                    "avg_hatecrimes_per_100k_fbi": 0.26694076,
+                    "median_household_income": 55690,
+                    "share_unemployed_seasonal": 0.04,
+                    "share_population_in_metro_areas": 0.31,
+                    "share_population_with_high_school_degree": 0.9179999999999999,
+                    "share_non_citizen": 0.02,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.423,
+                    "share_non_white": 0.15,
+                    "share_voters_voted_trump": 0.7,
+                    "hate_crimes_per_100k_splc": null
+                  }
+                ]
+              },
+              {
+                "name": "source_0",
+                "url": "https://cdn.jsdelivr.net/npm/vega-datasets@v1.29.0/data/us-10m.json",
+                "format": {"feature": "states", "type": "topojson"},
+                "transform": [
+                  {
+                    "type": "lookup",
+                    "from": "data-039bb35c1359776590ac17ba1b0537cf",
+                    "key": "id",
+                    "fields": ["id"],
+                    "values": ["state", "gini_index"]
+                  },
+                  {
+                    "type": "filter",
+                    "expr": "isValid(datum[\"gini_index\"]) && isFinite(+datum[\"gini_index\"])"
+                  }
+                ]
+              }
+            ],
+            "projections": [
+              {
+                "name": "projection",
+                "size": {"signal": "[width, height]"},
+                "fit": {"signal": "data('source_0')"},
+                "type": "albersUsa"
+              }
+            ],
+            "marks": [
+              {
+                "name": "marks",
+                "type": "shape",
+                "style": ["geoshape"],
+                "from": {"data": "source_0"},
+                "encode": {
+                  "update": {
+                    "stroke": {"value": "white"},
+                    "width": {"value": 0.01},
+                    "fill": {"scale": "color", "field": "gini_index"},
+                    "tooltip": {
+                      "signal": "{\"State Name\": ''+datum[\"state\"], \"gini_index\": format(datum[\"gini_index\"], \"\")}"
+                    }
+                  }
+                },
+                "transform": [{"type": "geoshape", "projection": "projection"}]
+              }
+            ],
+            "scales": [
+              {
+                "name": "color",
+                "type": "linear",
+                "domain": {"data": "source_0", "field": "gini_index"},
+                "range": "heatmap",
+                "interpolate": "hcl",
+                "zero": false
+              }
+            ],
+            "legends": [
+              {
+                "fill": "color",
+                "gradientLength": 100,
+                "symbolType": "circle",
+                "title": "gini_index"
+              }
+            ],
+            "config": {"legend": {"direction": "horizontal", "orient": "bottom-right"}}
+          };
+          var opt2 = {"mode": "vega-lite"};
+
+        	function showError(el, error){
+        	el.innerHTML = ('<div class="error">'
+        	+ '<p>JavaScript Error: ' + error.message + '</p>'
+        	+ "<p>This usually means there's a typo in your chart specification. "
+        	+ "See the javascript console for the full traceback.</p>"
+        	+ '</div>');
+        	throw error;
+        	}
+        	const el2 = document.getElementById('vis2');
+        	vegaEmbed("#vis2", spec2, opt2)
+        	.catch(error => showError(el2, error));
+        </script>
+      </div>
+      <div id="map2">
+        <!-- <h3>Median Household Income Choropleth Map</h2> -->
+        <div id="vis3"></div>
+        <script type="text/javascript">
+          var spec3 = {
+            "$schema": "https://vega.github.io/schema/vega/v5.json",
+            "background": "white",
+            "padding": 5,
+            "width": 600,
+            "height": 400,
+            "style": "cell",
+            "data": [
+              {
+                "name": "data-039bb35c1359776590ac17ba1b0537cf",
+                "values": [
+                  {
+                    "id": 1,
+                    "state": "Alabama",
+                    "avg_hatecrimes_per_100k_fbi": 1.8064104890000001,
+                    "median_household_income": 42278,
+                    "share_unemployed_seasonal": 0.06,
+                    "share_population_in_metro_areas": 0.64,
+                    "share_population_with_high_school_degree": 0.821,
+                    "share_non_citizen": 0.02,
+                    "share_white_poverty": 0.12,
+                    "gini_index": 0.47200000000000003,
+                    "share_non_white": 0.35,
+                    "share_voters_voted_trump": 0.63,
+                    "hate_crimes_per_100k_splc": 0.125838926
+                  },
+                  {
+                    "id": 2,
+                    "state": "Alaska",
+                    "avg_hatecrimes_per_100k_fbi": 1.656700109,
+                    "median_household_income": 67629,
+                    "share_unemployed_seasonal": 0.064,
+                    "share_population_in_metro_areas": 0.63,
+                    "share_population_with_high_school_degree": 0.914,
+                    "share_non_citizen": 0.04,
+                    "share_white_poverty": 0.06,
+                    "gini_index": 0.42200000000000004,
+                    "share_non_white": 0.42,
+                    "share_voters_voted_trump": 0.53,
+                    "hate_crimes_per_100k_splc": 0.143740118
+                  },
+                  {
+                    "id": 4,
+                    "state": "Arizona",
+                    "avg_hatecrimes_per_100k_fbi": 3.413927994,
+                    "median_household_income": 49254,
+                    "share_unemployed_seasonal": 0.063,
+                    "share_population_in_metro_areas": 0.9,
+                    "share_population_with_high_school_degree": 0.8420000000000001,
+                    "share_non_citizen": 0.1,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.455,
+                    "share_non_white": 0.49,
+                    "share_voters_voted_trump": 0.5,
+                    "hate_crimes_per_100k_splc": 0.225319954
+                  },
+                  {
+                    "id": 5,
+                    "state": "Arkansas",
+                    "avg_hatecrimes_per_100k_fbi": 0.8692088720000001,
+                    "median_household_income": 44922,
+                    "share_unemployed_seasonal": 0.052000000000000005,
+                    "share_population_in_metro_areas": 0.69,
+                    "share_population_with_high_school_degree": 0.8240000000000001,
+                    "share_non_citizen": 0.04,
+                    "share_white_poverty": 0.12,
+                    "gini_index": 0.45799999999999996,
+                    "share_non_white": 0.26,
+                    "share_voters_voted_trump": 0.6,
+                    "hate_crimes_per_100k_splc": 0.06906077299999999
+                  },
+                  {
+                    "id": 6,
+                    "state": "California",
+                    "avg_hatecrimes_per_100k_fbi": 2.397985899,
+                    "median_household_income": 60487,
+                    "share_unemployed_seasonal": 0.059000000000000004,
+                    "share_population_in_metro_areas": 0.97,
+                    "share_population_with_high_school_degree": 0.8059999999999999,
+                    "share_non_citizen": 0.13,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.47100000000000003,
+                    "share_non_white": 0.61,
+                    "share_voters_voted_trump": 0.33,
+                    "hate_crimes_per_100k_splc": 0.255805361
+                  },
+                  {
+                    "id": 8,
+                    "state": "Colorado",
+                    "avg_hatecrimes_per_100k_fbi": 2.804688765,
+                    "median_household_income": 60940,
+                    "share_unemployed_seasonal": 0.04,
+                    "share_population_in_metro_areas": 0.8,
+                    "share_population_with_high_school_degree": 0.893,
+                    "share_non_citizen": 0.06,
+                    "share_white_poverty": 0.07,
+                    "gini_index": 0.457,
+                    "share_non_white": 0.31,
+                    "share_voters_voted_trump": 0.44,
+                    "hate_crimes_per_100k_splc": 0.390523301
+                  },
+                  {
+                    "id": 9,
+                    "state": "Connecticut",
+                    "avg_hatecrimes_per_100k_fbi": 3.772701469,
+                    "median_household_income": 70161,
+                    "share_unemployed_seasonal": 0.052000000000000005,
+                    "share_population_in_metro_areas": 0.94,
+                    "share_population_with_high_school_degree": 0.8859999999999999,
+                    "share_non_citizen": 0.06,
+                    "share_white_poverty": 0.06,
+                    "gini_index": 0.486,
+                    "share_non_white": 0.3,
+                    "share_voters_voted_trump": 0.41,
+                    "hate_crimes_per_100k_splc": 0.33539226899999997
+                  },
+                  {
+                    "id": 10,
+                    "state": "Delaware",
+                    "avg_hatecrimes_per_100k_fbi": 1.469979563,
+                    "median_household_income": 57522,
+                    "share_unemployed_seasonal": 0.049,
+                    "share_population_in_metro_areas": 0.9,
+                    "share_population_with_high_school_degree": 0.8740000000000001,
+                    "share_non_citizen": 0.05,
+                    "share_white_poverty": 0.08,
+                    "gini_index": 0.44,
+                    "share_non_white": 0.37,
+                    "share_voters_voted_trump": 0.42,
+                    "hate_crimes_per_100k_splc": 0.322754169
+                  },
+                  {
+                    "id": 11,
+                    "state": "District of Columbia",
+                    "avg_hatecrimes_per_100k_fbi": 10.95347971,
+                    "median_household_income": 68277,
+                    "share_unemployed_seasonal": 0.067,
+                    "share_population_in_metro_areas": 1,
+                    "share_population_with_high_school_degree": 0.871,
+                    "share_non_citizen": 0.11,
+                    "share_white_poverty": 0.04,
+                    "gini_index": 0.532,
+                    "share_non_white": 0.63,
+                    "share_voters_voted_trump": 0.04,
+                    "hate_crimes_per_100k_splc": 1.52230172
+                  },
+                  {
+                    "id": 12,
+                    "state": "Florida",
+                    "avg_hatecrimes_per_100k_fbi": 0.6980703420000001,
+                    "median_household_income": 46140,
+                    "share_unemployed_seasonal": 0.052000000000000005,
+                    "share_population_in_metro_areas": 0.96,
+                    "share_population_with_high_school_degree": 0.853,
+                    "share_non_citizen": 0.09,
+                    "share_white_poverty": 0.11,
+                    "gini_index": 0.474,
+                    "share_non_white": 0.46,
+                    "share_voters_voted_trump": 0.49,
+                    "hate_crimes_per_100k_splc": 0.18752122300000001
+                  },
+                  {
+                    "id": 13,
+                    "state": "Georgia",
+                    "avg_hatecrimes_per_100k_fbi": 0.41201182399999997,
+                    "median_household_income": 49555,
+                    "share_unemployed_seasonal": 0.057999999999999996,
+                    "share_population_in_metro_areas": 0.82,
+                    "share_population_with_high_school_degree": 0.8390000000000001,
+                    "share_non_citizen": 0.08,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.46799999999999997,
+                    "share_non_white": 0.48,
+                    "share_voters_voted_trump": 0.51,
+                    "hate_crimes_per_100k_splc": 0.120420267
+                  },
+                  {
+                    "id": 15,
+                    "state": "Hawaii",
+                    "avg_hatecrimes_per_100k_fbi": null,
+                    "median_household_income": 71223,
+                    "share_unemployed_seasonal": 0.034,
+                    "share_population_in_metro_areas": 0.76,
+                    "share_population_with_high_school_degree": 0.904,
+                    "share_non_citizen": 0.08,
+                    "share_white_poverty": 0.07,
+                    "gini_index": 0.433,
+                    "share_non_white": 0.81,
+                    "share_voters_voted_trump": 0.3,
+                    "hate_crimes_per_100k_splc": null
+                  },
+                  {
+                    "id": 16,
+                    "state": "Idaho",
+                    "avg_hatecrimes_per_100k_fbi": 1.891330529,
+                    "median_household_income": 53438,
+                    "share_unemployed_seasonal": 0.042,
+                    "share_population_in_metro_areas": 0.7,
+                    "share_population_with_high_school_degree": 0.884,
+                    "share_non_citizen": 0.04,
+                    "share_white_poverty": 0.11,
+                    "gini_index": 0.433,
+                    "share_non_white": 0.16,
+                    "share_voters_voted_trump": 0.59,
+                    "hate_crimes_per_100k_splc": 0.124208173
+                  },
+                  {
+                    "id": 17,
+                    "state": "Illinois",
+                    "avg_hatecrimes_per_100k_fbi": 1.044015798,
+                    "median_household_income": 54916,
+                    "share_unemployed_seasonal": 0.054000000000000006,
+                    "share_population_in_metro_areas": 0.9,
+                    "share_population_with_high_school_degree": 0.8640000000000001,
+                    "share_non_citizen": 0.07,
+                    "share_white_poverty": 0.07,
+                    "gini_index": 0.465,
+                    "share_non_white": 0.37,
+                    "share_voters_voted_trump": 0.39,
+                    "hate_crimes_per_100k_splc": 0.19534454899999998
+                  },
+                  {
+                    "id": 18,
+                    "state": "Indiana",
+                    "avg_hatecrimes_per_100k_fbi": 1.757356567,
+                    "median_household_income": 48060,
+                    "share_unemployed_seasonal": 0.044000000000000004,
+                    "share_population_in_metro_areas": 0.79,
+                    "share_population_with_high_school_degree": 0.866,
+                    "share_non_citizen": 0.03,
+                    "share_white_poverty": 0.12,
+                    "gini_index": 0.44,
+                    "share_non_white": 0.2,
+                    "share_voters_voted_trump": 0.57,
+                    "hate_crimes_per_100k_splc": 0.247008877
+                  },
+                  {
+                    "id": 19,
+                    "state": "Iowa",
+                    "avg_hatecrimes_per_100k_fbi": 0.561395565,
+                    "median_household_income": 57810,
+                    "share_unemployed_seasonal": 0.036000000000000004,
+                    "share_population_in_metro_areas": 0.6,
+                    "share_population_with_high_school_degree": 0.914,
+                    "share_non_citizen": 0.03,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.42700000000000005,
+                    "share_non_white": 0.15,
+                    "share_voters_voted_trump": 0.52,
+                    "hate_crimes_per_100k_splc": 0.454427421
+                  },
+                  {
+                    "id": 20,
+                    "state": "Kansas",
+                    "avg_hatecrimes_per_100k_fbi": 2.143986672,
+                    "median_household_income": 53444,
+                    "share_unemployed_seasonal": 0.044000000000000004,
+                    "share_population_in_metro_areas": 0.64,
+                    "share_population_with_high_school_degree": 0.897,
+                    "share_non_citizen": 0.04,
+                    "share_white_poverty": 0.11,
+                    "gini_index": 0.445,
+                    "share_non_white": 0.25,
+                    "share_voters_voted_trump": 0.57,
+                    "hate_crimes_per_100k_splc": 0.105152471
+                  },
+                  {
+                    "id": 21,
+                    "state": "Kentucky",
+                    "avg_hatecrimes_per_100k_fbi": 4.2078896210000005,
+                    "median_household_income": 42786,
+                    "share_unemployed_seasonal": 0.05,
+                    "share_population_in_metro_areas": 0.56,
+                    "share_population_with_high_school_degree": 0.8170000000000001,
+                    "share_non_citizen": 0.03,
+                    "share_white_poverty": 0.17,
+                    "gini_index": 0.466,
+                    "share_non_white": 0.15,
+                    "share_voters_voted_trump": 0.63,
+                    "hate_crimes_per_100k_splc": 0.324396969
+                  },
+                  {
+                    "id": 22,
+                    "state": "Louisiana",
+                    "avg_hatecrimes_per_100k_fbi": 1.3411695540000002,
+                    "median_household_income": 42406,
+                    "share_unemployed_seasonal": 0.06,
+                    "share_population_in_metro_areas": 0.81,
+                    "share_population_with_high_school_degree": 0.8220000000000001,
+                    "share_non_citizen": 0.02,
+                    "share_white_poverty": 0.12,
+                    "gini_index": 0.475,
+                    "share_non_white": 0.42,
+                    "share_voters_voted_trump": 0.58,
+                    "hate_crimes_per_100k_splc": 0.10973334800000001
+                  },
+                  {
+                    "id": 23,
+                    "state": "Maine",
+                    "avg_hatecrimes_per_100k_fbi": 2.626610924,
+                    "median_household_income": 51710,
+                    "share_unemployed_seasonal": 0.044000000000000004,
+                    "share_population_in_metro_areas": 0.54,
+                    "share_population_with_high_school_degree": 0.902,
+                    "share_non_citizen": null,
+                    "share_white_poverty": 0.12,
+                    "gini_index": 0.43700000000000006,
+                    "share_non_white": 0.09,
+                    "share_voters_voted_trump": 0.45,
+                    "hate_crimes_per_100k_splc": 0.615574023
+                  },
+                  {
+                    "id": 24,
+                    "state": "Maryland",
+                    "avg_hatecrimes_per_100k_fbi": 1.324839538,
+                    "median_household_income": 76165,
+                    "share_unemployed_seasonal": 0.051,
+                    "share_population_in_metro_areas": 0.97,
+                    "share_population_with_high_school_degree": 0.89,
+                    "share_non_citizen": 0.08,
+                    "share_white_poverty": 0.06,
+                    "gini_index": 0.44299999999999995,
+                    "share_non_white": 0.5,
+                    "share_voters_voted_trump": 0.35,
+                    "hate_crimes_per_100k_splc": 0.37043897
+                  },
+                  {
+                    "id": 25,
+                    "state": "Massachusetts",
+                    "avg_hatecrimes_per_100k_fbi": 4.801899338999999,
+                    "median_household_income": 63151,
+                    "share_unemployed_seasonal": 0.046,
+                    "share_population_in_metro_areas": 0.97,
+                    "share_population_with_high_school_degree": 0.89,
+                    "share_non_citizen": 0.09,
+                    "share_white_poverty": 0.08,
+                    "gini_index": 0.475,
+                    "share_non_white": 0.27,
+                    "share_voters_voted_trump": 0.34,
+                    "hate_crimes_per_100k_splc": 0.630810592
+                  },
+                  {
+                    "id": 26,
+                    "state": "Michigan",
+                    "avg_hatecrimes_per_100k_fbi": 3.200442266,
+                    "median_household_income": 52005,
+                    "share_unemployed_seasonal": 0.05,
+                    "share_population_in_metro_areas": 0.87,
+                    "share_population_with_high_school_degree": 0.879,
+                    "share_non_citizen": 0.04,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.451,
+                    "share_non_white": 0.24,
+                    "share_voters_voted_trump": 0.48,
+                    "hate_crimes_per_100k_splc": 0.403779375
+                  },
+                  {
+                    "id": 27,
+                    "state": "Minnesota",
+                    "avg_hatecrimes_per_100k_fbi": 3.6124118160000003,
+                    "median_household_income": 67244,
+                    "share_unemployed_seasonal": 0.038,
+                    "share_population_in_metro_areas": 0.75,
+                    "share_population_with_high_school_degree": 0.915,
+                    "share_non_citizen": 0.05,
+                    "share_white_poverty": 0.05,
+                    "gini_index": 0.44,
+                    "share_non_white": 0.18,
+                    "share_voters_voted_trump": 0.45,
+                    "hate_crimes_per_100k_splc": 0.62747993
+                  },
+                  {
+                    "id": 28,
+                    "state": "Mississippi",
+                    "avg_hatecrimes_per_100k_fbi": 0.622745989,
+                    "median_household_income": 35521,
+                    "share_unemployed_seasonal": 0.061,
+                    "share_population_in_metro_areas": 0.45,
+                    "share_population_with_high_school_degree": 0.804,
+                    "share_non_citizen": null,
+                    "share_white_poverty": 0.14,
+                    "gini_index": 0.46799999999999997,
+                    "share_non_white": 0.44,
+                    "share_voters_voted_trump": 0.58,
+                    "hate_crimes_per_100k_splc": 0.067446801
+                  },
+                  {
+                    "id": 29,
+                    "state": "Missouri",
+                    "avg_hatecrimes_per_100k_fbi": 1.9089549890000002,
+                    "median_household_income": 56630,
+                    "share_unemployed_seasonal": 0.053,
+                    "share_population_in_metro_areas": 0.78,
+                    "share_population_with_high_school_degree": 0.868,
+                    "share_non_citizen": 0.02,
+                    "share_white_poverty": 0.07,
+                    "gini_index": 0.455,
+                    "share_non_white": 0.2,
+                    "share_voters_voted_trump": 0.57,
+                    "hate_crimes_per_100k_splc": 0.18452351
+                  },
+                  {
+                    "id": 30,
+                    "state": "Montana",
+                    "avg_hatecrimes_per_100k_fbi": 2.9549593780000003,
+                    "median_household_income": 51102,
+                    "share_unemployed_seasonal": 0.040999999999999995,
+                    "share_population_in_metro_areas": 0.34,
+                    "share_population_with_high_school_degree": 0.9079999999999999,
+                    "share_non_citizen": 0.01,
+                    "share_white_poverty": 0.1,
+                    "gini_index": 0.435,
+                    "share_non_white": 0.1,
+                    "share_voters_voted_trump": 0.57,
+                    "hate_crimes_per_100k_splc": 0.49549103200000005
+                  },
+                  {
+                    "id": 31,
+                    "state": "Nebraska",
+                    "avg_hatecrimes_per_100k_fbi": 2.68624842,
+                    "median_household_income": 56870,
+                    "share_unemployed_seasonal": 0.028999999999999998,
+                    "share_population_in_metro_areas": 0.6,
+                    "share_population_with_high_school_degree": 0.898,
+                    "share_non_citizen": 0.05,
+                    "share_white_poverty": 0.07,
+                    "gini_index": 0.43200000000000005,
+                    "share_non_white": 0.21,
+                    "share_voters_voted_trump": 0.6,
+                    "hate_crimes_per_100k_splc": 0.15948963300000002
+                  },
+                  {
+                    "id": 32,
+                    "state": "Nevada",
+                    "avg_hatecrimes_per_100k_fbi": 2.113990154,
+                    "median_household_income": 49875,
+                    "share_unemployed_seasonal": 0.067,
+                    "share_population_in_metro_areas": 0.87,
+                    "share_population_with_high_school_degree": 0.8390000000000001,
+                    "share_non_citizen": 0.1,
+                    "share_white_poverty": 0.08,
+                    "gini_index": 0.44799999999999995,
+                    "share_non_white": 0.5,
+                    "share_voters_voted_trump": 0.46,
+                    "hate_crimes_per_100k_splc": 0.14167316
+                  },
+                  {
+                    "id": 33,
+                    "state": "New Hampshire",
+                    "avg_hatecrimes_per_100k_fbi": 2.105988585,
+                    "median_household_income": 73397,
+                    "share_unemployed_seasonal": 0.034,
+                    "share_population_in_metro_areas": 0.63,
+                    "share_population_with_high_school_degree": 0.9129999999999999,
+                    "share_non_citizen": 0.03,
+                    "share_white_poverty": 0.06,
+                    "gini_index": 0.425,
+                    "share_non_white": 0.09,
+                    "share_voters_voted_trump": 0.47,
+                    "hate_crimes_per_100k_splc": 0.151549595
+                  },
+                  {
+                    "id": 34,
+                    "state": "New Jersey",
+                    "avg_hatecrimes_per_100k_fbi": 4.413202591,
+                    "median_household_income": 65243,
+                    "share_unemployed_seasonal": 0.055999999999999994,
+                    "share_population_in_metro_areas": 1,
+                    "share_population_with_high_school_degree": 0.8740000000000001,
+                    "share_non_citizen": 0.11,
+                    "share_white_poverty": 0.07,
+                    "gini_index": 0.46399999999999997,
+                    "share_non_white": 0.44,
+                    "share_voters_voted_trump": 0.42,
+                    "hate_crimes_per_100k_splc": 0.078305908
+                  },
+                  {
+                    "id": 35,
+                    "state": "New Mexico",
+                    "avg_hatecrimes_per_100k_fbi": 1.886435184,
+                    "median_household_income": 46686,
+                    "share_unemployed_seasonal": 0.068,
+                    "share_population_in_metro_areas": 0.69,
+                    "share_population_with_high_school_degree": 0.828,
+                    "share_non_citizen": 0.06,
+                    "share_white_poverty": 0.1,
+                    "gini_index": 0.46399999999999997,
+                    "share_non_white": 0.62,
+                    "share_voters_voted_trump": 0.4,
+                    "hate_crimes_per_100k_splc": 0.294811321
+                  },
+                  {
+                    "id": 36,
+                    "state": "New York",
+                    "avg_hatecrimes_per_100k_fbi": 3.1021642839999997,
+                    "median_household_income": 54310,
+                    "share_unemployed_seasonal": 0.051,
+                    "share_population_in_metro_areas": 0.94,
+                    "share_population_with_high_school_degree": 0.847,
+                    "share_non_citizen": 0.1,
+                    "share_white_poverty": 0.1,
+                    "gini_index": 0.499,
+                    "share_non_white": 0.42,
+                    "share_voters_voted_trump": 0.37,
+                    "hate_crimes_per_100k_splc": 0.35062044600000003
+                  },
+                  {
+                    "id": 37,
+                    "state": "North Carolina",
+                    "avg_hatecrimes_per_100k_fbi": 1.262679796,
+                    "median_household_income": 46784,
+                    "share_unemployed_seasonal": 0.057999999999999996,
+                    "share_population_in_metro_areas": 0.76,
+                    "share_population_with_high_school_degree": 0.843,
+                    "share_non_citizen": 0.05,
+                    "share_white_poverty": 0.1,
+                    "gini_index": 0.46399999999999997,
+                    "share_non_white": 0.38,
+                    "share_voters_voted_trump": 0.51,
+                    "hate_crimes_per_100k_splc": 0.244006588
+                  },
+                  {
+                    "id": 38,
+                    "state": "North Dakota",
+                    "avg_hatecrimes_per_100k_fbi": 4.741069885,
+                    "median_household_income": 60730,
+                    "share_unemployed_seasonal": 0.027999999999999997,
+                    "share_population_in_metro_areas": 0.5,
+                    "share_population_with_high_school_degree": 0.9009999999999999,
+                    "share_non_citizen": 0.03,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.433,
+                    "share_non_white": 0.15,
+                    "share_voters_voted_trump": 0.64,
+                    "hate_crimes_per_100k_splc": null
+                  },
+                  {
+                    "id": 39,
+                    "state": "Ohio",
+                    "avg_hatecrimes_per_100k_fbi": 3.240420404,
+                    "median_household_income": 49644,
+                    "share_unemployed_seasonal": 0.045,
+                    "share_population_in_metro_areas": 0.75,
+                    "share_population_with_high_school_degree": 0.8759999999999999,
+                    "share_non_citizen": 0.03,
+                    "share_white_poverty": 0.1,
+                    "gini_index": 0.452,
+                    "share_non_white": 0.21,
+                    "share_voters_voted_trump": 0.52,
+                    "hate_crimes_per_100k_splc": 0.19071396399999999
+                  },
+                  {
+                    "id": 40,
+                    "state": "Oklahoma",
+                    "avg_hatecrimes_per_100k_fbi": 1.08167215,
+                    "median_household_income": 47199,
+                    "share_unemployed_seasonal": 0.044000000000000004,
+                    "share_population_in_metro_areas": 0.59,
+                    "share_population_with_high_school_degree": 0.856,
+                    "share_non_citizen": 0.04,
+                    "share_white_poverty": 0.1,
+                    "gini_index": 0.45399999999999996,
+                    "share_non_white": 0.35,
+                    "share_voters_voted_trump": 0.65,
+                    "hate_crimes_per_100k_splc": 0.133629099
+                  },
+                  {
+                    "id": 41,
+                    "state": "Oregon",
+                    "avg_hatecrimes_per_100k_fbi": 3.394886113,
+                    "median_household_income": 58875,
+                    "share_unemployed_seasonal": 0.062,
+                    "share_population_in_metro_areas": 0.87,
+                    "share_population_with_high_school_degree": 0.8909999999999999,
+                    "share_non_citizen": 0.07,
+                    "share_white_poverty": 0.1,
+                    "gini_index": 0.449,
+                    "share_non_white": 0.26,
+                    "share_voters_voted_trump": 0.41,
+                    "hate_crimes_per_100k_splc": 0.832849608
+                  },
+                  {
+                    "id": 42,
+                    "state": "Pennsylvania",
+                    "avg_hatecrimes_per_100k_fbi": 0.43092759,
+                    "median_household_income": 55173,
+                    "share_unemployed_seasonal": 0.053,
+                    "share_population_in_metro_areas": 0.87,
+                    "share_population_with_high_school_degree": 0.879,
+                    "share_non_citizen": 0.03,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.461,
+                    "share_non_white": 0.24,
+                    "share_voters_voted_trump": 0.49,
+                    "hate_crimes_per_100k_splc": 0.285101092
+                  },
+                  {
+                    "id": 44,
+                    "state": "Rhode Island",
+                    "avg_hatecrimes_per_100k_fbi": 1.282571834,
+                    "median_household_income": 58633,
+                    "share_unemployed_seasonal": 0.054000000000000006,
+                    "share_population_in_metro_areas": 1,
+                    "share_population_with_high_school_degree": 0.847,
+                    "share_non_citizen": 0.08,
+                    "share_white_poverty": 0.08,
+                    "gini_index": 0.467,
+                    "share_non_white": 0.28,
+                    "share_voters_voted_trump": 0.4,
+                    "hate_crimes_per_100k_splc": 0.095401641
+                  },
+                  {
+                    "id": 45,
+                    "state": "South Carolina",
+                    "avg_hatecrimes_per_100k_fbi": 1.937082833,
+                    "median_household_income": 44929,
+                    "share_unemployed_seasonal": 0.057,
+                    "share_population_in_metro_areas": 0.79,
+                    "share_population_with_high_school_degree": 0.836,
+                    "share_non_citizen": 0.03,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.461,
+                    "share_non_white": 0.36,
+                    "share_voters_voted_trump": 0.55,
+                    "hate_crimes_per_100k_splc": 0.209894423
+                  },
+                  {
+                    "id": 46,
+                    "state": "South Dakota",
+                    "avg_hatecrimes_per_100k_fbi": 3.301737127,
+                    "median_household_income": 53053,
+                    "share_unemployed_seasonal": 0.035,
+                    "share_population_in_metro_areas": 0.51,
+                    "share_population_with_high_school_degree": 0.899,
+                    "share_non_citizen": null,
+                    "share_white_poverty": 0.08,
+                    "gini_index": 0.442,
+                    "share_non_white": 0.17,
+                    "share_voters_voted_trump": 0.62,
+                    "hate_crimes_per_100k_splc": null
+                  },
+                  {
+                    "id": 47,
+                    "state": "Tennessee",
+                    "avg_hatecrimes_per_100k_fbi": 3.13605115,
+                    "median_household_income": 43716,
+                    "share_unemployed_seasonal": 0.057,
+                    "share_population_in_metro_areas": 0.82,
+                    "share_population_with_high_school_degree": 0.831,
+                    "share_non_citizen": 0.04,
+                    "share_white_poverty": 0.13,
+                    "gini_index": 0.46799999999999997,
+                    "share_non_white": 0.27,
+                    "share_voters_voted_trump": 0.61,
+                    "hate_crimes_per_100k_splc": 0.19993848
+                  },
+                  {
+                    "id": 48,
+                    "state": "Texas",
+                    "avg_hatecrimes_per_100k_fbi": 0.752768305,
+                    "median_household_income": 53875,
+                    "share_unemployed_seasonal": 0.042,
+                    "share_population_in_metro_areas": 0.92,
+                    "share_population_with_high_school_degree": 0.799,
+                    "share_non_citizen": 0.11,
+                    "share_white_poverty": 0.08,
+                    "gini_index": 0.469,
+                    "share_non_white": 0.56,
+                    "share_voters_voted_trump": 0.53,
+                    "hate_crimes_per_100k_splc": 0.213583938
+                  },
+                  {
+                    "id": 49,
+                    "state": "Utah",
+                    "avg_hatecrimes_per_100k_fbi": 2.384065044,
+                    "median_household_income": 63383,
+                    "share_unemployed_seasonal": 0.036000000000000004,
+                    "share_population_in_metro_areas": 0.82,
+                    "share_population_with_high_school_degree": 0.904,
+                    "share_non_citizen": 0.04,
+                    "share_white_poverty": 0.08,
+                    "gini_index": 0.419,
+                    "share_non_white": 0.19,
+                    "share_voters_voted_trump": 0.47,
+                    "hate_crimes_per_100k_splc": 0.136546733
+                  },
+                  {
+                    "id": 50,
+                    "state": "Vermont",
+                    "avg_hatecrimes_per_100k_fbi": 1.90308139,
+                    "median_household_income": 60708,
+                    "share_unemployed_seasonal": 0.037000000000000005,
+                    "share_population_in_metro_areas": 0.35,
+                    "share_population_with_high_school_degree": 0.91,
+                    "share_non_citizen": 0.01,
+                    "share_white_poverty": 0.1,
+                    "gini_index": 0.444,
+                    "share_non_white": 0.06,
+                    "share_voters_voted_trump": 0.33,
+                    "hate_crimes_per_100k_splc": 0.324149109
+                  },
+                  {
+                    "id": 51,
+                    "state": "Virginia",
+                    "avg_hatecrimes_per_100k_fbi": 1.724754584,
+                    "median_household_income": 66155,
+                    "share_unemployed_seasonal": 0.043,
+                    "share_population_in_metro_areas": 0.89,
+                    "share_population_with_high_school_degree": 0.866,
+                    "share_non_citizen": 0.06,
+                    "share_white_poverty": 0.07,
+                    "gini_index": 0.45899999999999996,
+                    "share_non_white": 0.38,
+                    "share_voters_voted_trump": 0.45,
+                    "hate_crimes_per_100k_splc": 0.363248898
+                  },
+                  {
+                    "id": 53,
+                    "state": "Washington",
+                    "avg_hatecrimes_per_100k_fbi": 3.817740296,
+                    "median_household_income": 59068,
+                    "share_unemployed_seasonal": 0.052000000000000005,
+                    "share_population_in_metro_areas": 0.86,
+                    "share_population_with_high_school_degree": 0.897,
+                    "share_non_citizen": 0.08,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.441,
+                    "share_non_white": 0.31,
+                    "share_voters_voted_trump": 0.38,
+                    "hate_crimes_per_100k_splc": 0.67748765
+                  },
+                  {
+                    "id": 54,
+                    "state": "West Virginia",
+                    "avg_hatecrimes_per_100k_fbi": 2.037053631,
+                    "median_household_income": 39552,
+                    "share_unemployed_seasonal": 0.073,
+                    "share_population_in_metro_areas": 0.55,
+                    "share_population_with_high_school_degree": 0.828,
+                    "share_non_citizen": 0.01,
+                    "share_white_poverty": 0.14,
+                    "gini_index": 0.451,
+                    "share_non_white": 0.07,
+                    "share_voters_voted_trump": 0.69,
+                    "hate_crimes_per_100k_splc": 0.328677075
+                  },
+                  {
+                    "id": 55,
+                    "state": "Wisconsin",
+                    "avg_hatecrimes_per_100k_fbi": 1.121944651,
+                    "median_household_income": 58080,
+                    "share_unemployed_seasonal": 0.043,
+                    "share_population_in_metro_areas": 0.69,
+                    "share_population_with_high_school_degree": 0.898,
+                    "share_non_citizen": 0.03,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.43,
+                    "share_non_white": 0.22,
+                    "share_voters_voted_trump": 0.48,
+                    "hate_crimes_per_100k_splc": 0.226197105
+                  },
+                  {
+                    "id": 56,
+                    "state": "Wyoming",
+                    "avg_hatecrimes_per_100k_fbi": 0.26694076,
+                    "median_household_income": 55690,
+                    "share_unemployed_seasonal": 0.04,
+                    "share_population_in_metro_areas": 0.31,
+                    "share_population_with_high_school_degree": 0.9179999999999999,
+                    "share_non_citizen": 0.02,
+                    "share_white_poverty": 0.09,
+                    "gini_index": 0.423,
+                    "share_non_white": 0.15,
+                    "share_voters_voted_trump": 0.7,
+                    "hate_crimes_per_100k_splc": null
+                  }
+                ]
+              },
+              {
+                "name": "source_0",
+                "url": "https://cdn.jsdelivr.net/npm/vega-datasets@v1.29.0/data/us-10m.json",
+                "format": {"feature": "states", "type": "topojson"},
+                "transform": [
+                  {
+                    "type": "lookup",
+                    "from": "data-039bb35c1359776590ac17ba1b0537cf",
+                    "key": "id",
+                    "fields": ["id"],
+                    "values": ["state", "median_household_income"]
+                  },
+                  {
+                    "type": "filter",
+                    "expr": "isValid(datum[\"median_household_income\"]) && isFinite(+datum[\"median_household_income\"])"
+                  }
+                ]
+              }
+            ],
+            "projections": [
+              {
+                "name": "projection",
+                "size": {"signal": "[width, height]"},
+                "fit": {"signal": "data('source_0')"},
+                "type": "albersUsa"
+              }
+            ],
+            "marks": [
+              {
+                "name": "marks",
+                "type": "shape",
+                "style": ["geoshape"],
+                "from": {"data": "source_0"},
+                "encode": {
+                  "update": {
+                    "stroke": {"value": "white"},
+                    "width": {"value": 0.01},
+                    "fill": {"scale": "color", "field": "median_household_income"},
+                    "tooltip": {
+                      "signal": "{\"State Name\": ''+datum[\"state\"], \"median_household_income\": format(datum[\"median_household_income\"], \"\")}"
+                    }
+                  }
+                },
+                "transform": [{"type": "geoshape", "projection": "projection"}]
+              }
+            ],
+            "scales": [
+              {
+                "name": "color",
+                "type": "linear",
+                "domain": {"data": "source_0", "field": "median_household_income"},
+                "range": "heatmap",
+                "interpolate": "hcl",
+                "zero": false
+              }
+            ],
+            "legends": [
+              {
+                "fill": "color",
+                "gradientLength": 100,
+                "symbolType": "circle",
+                "title": "median_household_income"
+              }
+            ],
+            "config": {"legend": {"direction": "horizontal", "orient": "bottom-right"}}
+          };
+          var opt3 = {"mode": "vega-lite"};
+
+        	function showError(el, error){
+        	el.innerHTML = ('<div class="error">'
+        	+ '<p>JavaScript Error: ' + error.message + '</p>'
+        	+ "<p>This usually means there's a typo in your chart specification. "
+        	+ "See the javascript console for the full traceback.</p>"
+        	+ '</div>');
+        	throw error;
+        	}
+        	const el3 = document.getElementById('vis3');
+        	vegaEmbed("#vis3", spec3, opt3)
+        	.catch(error => showError(el3, error));
+        </script>
+      </div>
+    </div>
+  </div>
+  <br/>
+
+
+</body>
+<script>
+  function myFunction(showid, hideid, btn1, btn2) {
+    document.getElementById(showid).style.visibility = "visible";
+    document.getElementById(hideid).style.visibility = "hidden";
+    document.getElementById(btn1).style.borderColor = "#5a80b3";
+    document.getElementById(btn2).style.borderColor = "transparent";
+  }
+</script>
+</html>
